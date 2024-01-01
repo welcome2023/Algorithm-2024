@@ -8,7 +8,7 @@ import sun.java2d.pipe.SpanIterator;
  */
 public class SelectSort {
     public static void main(String[] args) {
-        int[] arr = {3,2,7,1};
+        int[] arr = {7,3,1,2};
        selectionSort(arr);
         for (int i : arr) {
             System.out.println(i);
@@ -26,7 +26,7 @@ public class SelectSort {
             for (int j = i + 1; j < arr.length; j++) {
                 maxIndex = arr[j] > arr[maxIndex] ? j : maxIndex;
             }
-            swap(arr, i, maxIndex);
+            swap1(arr, i, maxIndex);
         }
     }
 
@@ -34,5 +34,12 @@ public class SelectSort {
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
+    }
+
+    // 别轻易用位运算符,内存位置相同,则结果回被清洗成0;
+    private static void swap1(int[] arr, int i, int j) {
+       arr[i]=arr[i]^arr[j];
+       arr[j]=arr[i]^arr[j];
+       arr[i]=arr[i]^arr[j];
     }
 }
