@@ -17,7 +17,7 @@ public class SelectSort {
 
     public static void selectionSort(int[] arr) {
         // 过滤一些垃圾数据
-        if (arr == null || arr.length <= 2) {
+        if (arr == null || arr.length < 2) {
             return;
         }
         //
