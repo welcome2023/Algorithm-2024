@@ -1,40 +1,24 @@
 package com;
 
-import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * @createDate 2023-12-25 22:52
  */
 public class Test {
     public static void main(String[] args) {
-        int[] arr = {7,3,1,2,6};
-        sort(arr);
-        for (int i : arr) {
-            System.out.println(i);
-        }
+        int []arr={1,4,2,3,6,7,8,99,100};
+        System.out.println(process(arr, 0, arr.length - 1));
     }
 
-    private static void sort(int[] arr) {
-        if(arr==null||arr.length<2){
-            return;
-        }
+   public static int process(int []arr,int l,int r){
+       if(l==r){
+           return arr[l];
+       }
 
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = i-1; j >=0&&arr[j]>arr[j+1]; j--) {
-                swap(arr,j,j+1);
-
-            }
-
-        }
-    }
-
-
-    public static void swap(int []arr,int i,int j){
-        int tmp=arr[i];
-        arr[i]=arr[j];
-        arr[j]=tmp;
-    }
-
+       int mid =l+((r-l)>>1);
+       int leftMax=process(arr,l,mid);
+       int rightMax=process(arr,mid+1,r);
+       return Math.max(leftMax,rightMax);
+   }
 
 }

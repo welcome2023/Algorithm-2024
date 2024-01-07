@@ -3,7 +3,7 @@ package com.algorithmtest.sort;
 /**
  * @createDate 2024-01-02 23:06
  */
-public class Insert {
+public class InsertSort {
     public static void main(String[] args) {
         int[] arr = {4, 2, 1};
         sort(arr);
