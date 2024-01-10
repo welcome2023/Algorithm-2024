@@ -2,7 +2,7 @@ package com.algorithmtest.recursion;
 
 /**
  * @createDate 2024-01-08 21:44
- * 小和问题:在一个数组中,每一个数左边比当前数小的数累加起来,叫做这个数组的小和.
+ * 小和问题:在一个数组中,每一个数左边比当前数 小 的数累加起来,叫做这个数组的小和.
  */
 public class SmallSum {
     public static void main(String[] args) {
