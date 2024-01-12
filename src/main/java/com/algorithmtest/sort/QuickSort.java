@@ -1,6 +1,5 @@
 package com.algorithmtest.sort;
 
-import java.util.EmptyStackException;
 
 /**
  * @createDate 2024-01-10 22:11
@@ -22,16 +21,15 @@ public class QuickSort {
     }
     public static void quickSort(int []arr,int l,int r){
         if(l<r){
-            swap(arr,l+(int)(Math.random()*(r-l+1)),r);
+        //    swap(arr,l+(int)(Math.random()*(r-l+1)),r);
             int []p=partition(arr,l,r);
             quickSort(arr,l,p[0]-1);
             quickSort(arr,p[1]+1,r);
-
         }
-
     }
 
     private static int[] partition(int[] arr, int l, int r) {
+        //arr[r]=pivot
         int less=l-1;
         int more=r;
         while (l<more){
