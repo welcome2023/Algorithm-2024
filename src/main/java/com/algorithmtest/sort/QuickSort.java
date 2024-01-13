@@ -7,7 +7,7 @@ package com.algorithmtest.sort;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int []arr={3,5,7,1,2};
+        int []arr={3,5,7,1,2,2,3,4,2,1};
         quickSort(arr);
         for (int i : arr) {
             System.out.println(i);
@@ -21,7 +21,9 @@ public class QuickSort {
     }
     public static void quickSort(int []arr,int l,int r){
         if(l<r){
-        //    swap(arr,l+(int)(Math.random()*(r-l+1)),r);
+//             随机数范围是 [0, 1)
+            swap(arr,l+(int)(Math.random()*(r-l+1)),r);
+            swap(arr,l+(int)(Math.random()*(r-l+1)),r);
             int []p=partition(arr,l,r);
             quickSort(arr,l,p[0]-1);
             quickSort(arr,p[1]+1,r);
