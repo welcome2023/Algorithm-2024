@@ -26,6 +26,7 @@ public class SmallSum {
         int res = 0;
         while (p1 <= m && p2 <= r) {
             res += arr[p1] < arr[p2] ? (r - p2 + 1) * arr[p1] : 0;
+            // 此处有坑
             help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
         }
         while (p1 <= m) {

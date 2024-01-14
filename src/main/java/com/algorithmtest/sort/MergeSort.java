@@ -5,7 +5,7 @@ package com.algorithmtest.sort;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        int[] arr = {1, 3, 5, 2, 6, 8, -1};
+        int[] arr = {1, 3,-1, 5, 2, 6, 8, -1,-1};
         process(arr, 0, arr.length - 1);
         for (int i : arr) {
             System.out.println(i);

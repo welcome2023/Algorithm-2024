@@ -6,7 +6,7 @@ package com.algorithmtest.recursion;
  */
 public class NiXuDui {
     public static void main(String[] args) {
-        int []arr={3,1,4,2,5};
+        int[] arr = {2, 4, 3, 3, 1};
         System.out.println(getNxd(arr));
 
     }
@@ -31,7 +31,8 @@ public class NiXuDui {
         int p2 = m + 1;
         while (p1 <= m && p2 <= r) {
             count += arr[p1] > arr[p2] ? m - p1 + 1 : 0;
-            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
+            // 此处有坑
+            help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
         }
         while (p1 <= m) {
             help[i++] = arr[p1++];
