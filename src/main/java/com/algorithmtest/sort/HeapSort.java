@@ -31,6 +31,12 @@ public class HeapSort {
 
 
     // 调整为大根堆 上浮
+
+    /**
+     * @param arr 用数组来存储堆
+     * @param index 子节点索引
+     */
+
     public static void heapInsert(int[] arr, int index) {
         while (arr[index] > arr[(index - 1) / 2]) {
             swap(arr, index, (index - 1) / 2);
@@ -38,8 +44,8 @@ public class HeapSort {
         }
     }
 
-    /**
-     * @param arr
+    /** 功能:取出最大值,然后将最后一个值与根节点交换,heapSize--,使其依旧为大根堆
+     * @param arr 用数组来存储堆
      * @param index    父节点索引
      * @param heapSize 最大索引,防止索引越界
      *                 largest:子节点中最大的孩子索引
@@ -58,7 +64,6 @@ public class HeapSort {
             left = index * 2 + 1;
         }
     }
-
 
     private static void swap(int[] arr, int i, int j) {
         int tmp = arr[i];

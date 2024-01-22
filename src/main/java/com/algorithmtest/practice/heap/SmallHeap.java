@@ -16,6 +16,8 @@ public class SmallHeap {
         heap.add(8);
         while ( !heap.isEmpty()){
             System.out.println(heap.poll());
+            // peek:查看不删除,循环中会内存溢出
+            // poll:取出并删除
         }
     }
 }
