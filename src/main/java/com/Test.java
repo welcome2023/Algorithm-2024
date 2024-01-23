@@ -1,6 +1,8 @@
 package com;
 
 
+import jdk.nashorn.internal.parser.Lexer;
+
 import java.util.PriorityQueue;
 
 /**
@@ -8,33 +10,61 @@ import java.util.PriorityQueue;
  * getMax
  */
 public class Test {
-   public static void main(String[] args) {
-       int[] arr = {1, 4, 2, 6, 8, 5, 3, 2};
+    public static void main(String[] args) {
+        int[] arr = {1, 4, 2, 6, 8, 5, 3, 2};
+        heapSort(arr);
 
-       sortedArrDistanceLessK(arr,5);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
 
-      for (int i : arr) {
-         System.out.println(i);
-      }
+    public static void heapSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            heapInsert(arr, i);
+        }
+        int heapSize = arr.length;
+        swap(arr, 0, --heapSize);
 
-   }
+        while (heapSize > 0) {
+            heapify(arr, 0, heapSize);
+            swap(arr, 0, --heapSize);
+        }
 
-   private static void sortedArrDistanceLessK(int[] arr, int k) {
-      PriorityQueue<Integer> heap = new PriorityQueue<>();
-       int index=0;
-      for (; index < Math.max(arr.length,k); index++) {
-         heap.add(arr[index]);
-      }
-      int i=0;
-      for (; index< arr.length; i++,index++) {
-         heap.add(arr[index]);
-         arr[i]=heap.poll();
-      }
+    }
 
-      while (!heap.isEmpty()){
-         arr[i++]=heap.poll();
-      }
-   }
+
+    public static void heapInsert(int[] arr, int index) {
+        while (arr[index] > arr[(index - 1) / 2]) {
+            swap(arr, index, (index - 1) / 2);
+            index = (index - 1) / 2;
+        }
+
+    }
+
+    public static void heapify(int[] arr, int index, int heapSize) {
+        int left = index * 2 + 1;
+        while (left < heapSize) {
+            int largest = left + 1 < heapSize && arr[left+1] > arr[left] ? left+1 : left;
+            largest = arr[largest] > arr[index] ? largest : index;
+            if (index == largest) {
+                break;
+            }
+            swap(arr, largest, index);
+            index = largest;
+            left = index * 2 + 1;
+        }
+    }
+
+
+    private static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
 
 
 }

@@ -1,5 +1,7 @@
 package com.algorithmtest.practice.heap;
 
+import com.algorithmtest.utils.IntegerComparator;
+
 import java.util.PriorityQueue;
 
 /**
@@ -8,7 +10,8 @@ import java.util.PriorityQueue;
  */
 public class SmallHeap {
     public static void main(String []args){
-        PriorityQueue<Integer> heap=new PriorityQueue<>();
+
+        PriorityQueue<Integer> heap=new PriorityQueue<>(new IntegerComparator());
         heap.add(8);
         heap.add(6);
         heap.add(3);
