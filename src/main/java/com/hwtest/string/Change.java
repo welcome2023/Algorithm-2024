@@ -1,6 +1,4 @@
-package com.huawei.string;
-
-import java.util.Scanner;
+package com.hwtest.string;
 
 /**
  * @createDate 2023-12-27 22:15

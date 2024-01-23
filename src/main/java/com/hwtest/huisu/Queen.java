@@ -1,4 +1,4 @@
-package com.huawei.huisu;
+package com.hwtest.huisu;
 
 
 import java.util.*;
