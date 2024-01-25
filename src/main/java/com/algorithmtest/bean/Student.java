@@ -13,11 +13,4 @@ import lombok.ToString;
         private String name;
         private int age;
         private String address;
-
-
- 
-
-   
-
-
 }
