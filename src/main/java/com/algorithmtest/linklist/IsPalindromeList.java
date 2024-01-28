@@ -7,6 +7,7 @@ import java.util.Stack;
 /**
  * @author cmsxyz@163.com
  * @date 2024-01-25 22:00
+ * 需求:判断是否为回文链表
  */
 public class IsPalindromeList {
 

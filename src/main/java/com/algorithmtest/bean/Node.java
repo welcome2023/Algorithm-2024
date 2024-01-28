@@ -6,12 +6,20 @@ package com.algorithmtest.bean;
  */
 public class Node {
 
-        public int value;
-        public Node next;
+    public int value;
+    public Node next;
+    public Node rand;
 
-        public Node rand;
+    public Node(int data) {
+        this.value = data;
+        this.next = null;
+    }
 
-        public Node(int data) {
-            this.value = data;
-        }
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", next=" + (next != null ? next.value : "null") +
+                '}';
+    }
 }
