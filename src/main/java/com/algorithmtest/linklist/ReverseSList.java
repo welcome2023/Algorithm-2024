@@ -7,7 +7,7 @@ import com.algorithmtest.bean.SingleNode;
  * @author cmsxyz@163.com
  * @date 2024-01-28 22:53
  */
-public class ReverseList {
+public class ReverseSList {
     public static void main(String[] args) {
         SingleNode head = new SingleNode(4);
         head.next=new SingleNode(3);

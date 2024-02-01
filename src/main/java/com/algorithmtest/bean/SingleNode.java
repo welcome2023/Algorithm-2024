@@ -15,6 +15,8 @@ public class SingleNode {
 
     @Override
     public String toString() {
-        return "value:" + value + ",next:" + (next != null ? next.value : null);
-    }
-}
+        return "SingleNode{" +
+                "val=" + value +
+                ", next=" + (next != null ? next.value : "null") +
+                '}';
+    }}
