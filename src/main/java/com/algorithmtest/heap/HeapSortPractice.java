@@ -1,4 +1,4 @@
-package com.algorithmtest.practice.heap;
+package com.algorithmtest.heap;
 
 import java.util.PriorityQueue;
 

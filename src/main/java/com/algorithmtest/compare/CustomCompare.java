@@ -1,4 +1,4 @@
-package com.algorithmtest.practice.compare;
+package com.algorithmtest.compare;
 
 import com.algorithmtest.bean.Student;
 import com.algorithmtest.utils.IdAscendingComparator;

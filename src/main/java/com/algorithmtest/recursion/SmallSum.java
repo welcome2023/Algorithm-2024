@@ -1,4 +1,4 @@
-package com.algorithmtest.practice.recursion;
+package com.algorithmtest.recursion;
 
 /**
  * @createDate 2024-01-08 21:44
