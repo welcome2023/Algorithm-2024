@@ -1,6 +1,6 @@
 package com.algorithmtest.tree;
 
-import com.algorithmtest.bean.BinaryTree;
+import com.algorithmtest.bean.Tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,20 +12,21 @@ import java.util.Stack;
  */
 public class BinaryTreeUnRecurErgodic {
     public static void main(String[] args) {
-        BinaryTree head = new BinaryTree(1);
-        head.left = new BinaryTree(2);
-        head.right = new BinaryTree(3);
-        head.left.left=new BinaryTree(4);
-        head.left.right=new BinaryTree(5);
-        head.right.left=new BinaryTree(6);
-        head.right.right=new BinaryTree(7);
+        Tree head = new Tree(1);
+        head.left = new Tree(2);
+        head.right = new Tree(3);
+        head.left.left = new Tree(4);
+        head.left.right = new Tree(5);
+        head.right.left = new Tree(6);
+        head.right.right = new Tree(7);
         width(head);
     }
 
-    public static void preOrderUnRecur(BinaryTree head) {
+    // 前序遍历：弹根节点，进栈先右后左
+    public static void preOrderUnRecur(Tree head) {
         System.out.println("pre-order");
         if (head != null) {
-            Stack<BinaryTree> stack = new Stack<>();
+            Stack<Tree> stack = new Stack<>();
             stack.add(head);
             while (!stack.isEmpty()) {
                 head = stack.pop();
@@ -41,11 +42,12 @@ public class BinaryTreeUnRecurErgodic {
         System.out.println();
     }
 
-    public static void posOrderUnRecur(BinaryTree head) {
+    // 后序遍历：准备两个栈,根左右
+    public static void posOrderUnRecur(Tree head) {
         System.out.println("pos-order");
         if (head != null) {
-            Stack<BinaryTree> stack1 = new Stack<>();
-            Stack<BinaryTree> stack2 = new Stack<>();
+            Stack<Tree> stack1 = new Stack<>();
+            Stack<Tree> stack2 = new Stack<>();
             stack1.push(head);
             while (!stack1.isEmpty()) {
                 head = stack1.pop();
@@ -64,17 +66,19 @@ public class BinaryTreeUnRecurErgodic {
         }
     }
 
-    public static void inOrderUnRecur(BinaryTree head){
+    // 中序遍历:一个栈,先左后右
+    public static void inOrderUnRecur(Tree head) {
         System.out.println("in-order ");
-        if(head!=null){
-            Stack<BinaryTree> stack = new Stack<>();
-            while (!stack.isEmpty()|| head!=null){
-                if(head!=null){
+        if (head != null) {
+            Stack<Tree> stack = new Stack<>();
+            while (!stack.isEmpty() || head != null) {
+                if (head != null) {
                     stack.push(head);
-                    head=head.left;
-                }else {head=stack.pop();
-                    System.out.println(head.value+" ");
-                    head=head.right;
+                    head = head.left;
+                } else {
+                    head = stack.pop();
+                    System.out.println(head.value + " ");
+                    head = head.right;
                 }
             }
         }
@@ -82,19 +86,20 @@ public class BinaryTreeUnRecurErgodic {
 
     }
 
-    public static void width(BinaryTree head){
-        if(head==null){
+    // 广度优先遍历:用队列实现,先进先出,先左后右
+    public static void width(Tree head) {
+        if (head == null) {
             return;
         }
-        Queue<BinaryTree> queue = new LinkedList<>();
+        Queue<Tree> queue = new LinkedList<>();
         queue.add(head);
-        while (!queue.isEmpty()){
-            BinaryTree cur = queue.poll();
+        while (!queue.isEmpty()) {
+            Tree cur = queue.poll();
             System.out.println(cur.value);
-            if(cur.left!=null){
+            if (cur.left != null) {
                 queue.add(cur.left);
             }
-            if(cur.right!=null){
+            if (cur.right != null) {
                 queue.add(cur.right);
             }
         }

@@ -1,6 +1,6 @@
 package com.algorithmtest.tree;
 
-import com.algorithmtest.bean.BinaryTree;
+import com.algorithmtest.bean.Tree;
 
 /**
  * @author cmsxyz@163.com
@@ -9,13 +9,13 @@ import com.algorithmtest.bean.BinaryTree;
 public class BinaryTreeRecursionErgodic {
 
     public static void main(String[] args) {
-        BinaryTree head=new BinaryTree(1);
-        head.left=new BinaryTree(2);
-        head.right=new BinaryTree(3);
-        head.left.left=new BinaryTree(4);
-        head.left.right=new BinaryTree(5);
-        head.right.left=new BinaryTree(6);
-        head.right.right=new BinaryTree(7);
+        Tree head=new Tree(1);
+        head.left=new Tree(2);
+        head.right=new Tree(3);
+        head.left.left=new Tree(4);
+        head.left.right=new Tree(5);
+        head.right.left=new Tree(6);
+        head.right.right=new Tree(7);
         System.out.println("先序遍历");
         preOrderRecur(head);
         System.out.println("中序遍历");
@@ -23,7 +23,7 @@ public class BinaryTreeRecursionErgodic {
         System.out.println("后序遍历");
         posOrderRecur(head);
     }
-    public static void  f(BinaryTree head){
+    public static void  f(Tree head){
         if(head==null){
             return;
         }
@@ -31,7 +31,7 @@ public class BinaryTreeRecursionErgodic {
         f(head.right);
     }
 
-    public static void preOrderRecur(BinaryTree head){
+    public static void preOrderRecur(Tree head){
         if(head==null){
             return;
         }
@@ -40,7 +40,7 @@ public class BinaryTreeRecursionErgodic {
         preOrderRecur(head.right);
     }
 
-    public static void inOrderRecur(BinaryTree head){
+    public static void inOrderRecur(Tree head){
         if(head==null){
             return;
         }
@@ -49,7 +49,7 @@ public class BinaryTreeRecursionErgodic {
         inOrderRecur(head.right);
     }
 
-    public static void posOrderRecur(BinaryTree head){
+    public static void posOrderRecur(Tree head){
         if(head==null){
             return;
         }
@@ -57,4 +57,5 @@ public class BinaryTreeRecursionErgodic {
         posOrderRecur(head.right);
         System.out.println(head.value+" ");
     }
+
 }
