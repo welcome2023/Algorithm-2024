@@ -22,29 +22,49 @@ public class Test {
         head.left.right = new Tree(5);
         head.right.left = new Tree(6);
         head.right.right = new Tree(7);
-        inOrder(head);
-    }
+//        posOrder(head);
+        width(head);
 
-    public static void inOrder(Tree head) {
+    }
+    public static void posOrder(Tree head) {
         if (head == null) {
             return;
         }
-        Stack<Tree> stack = new Stack<>();
-        stack.add(head);
-        while (!stack.isEmpty()) {
-            if (head.left != null) {
-                head=head.left;
-                stack.push(head);
-                System.out.println(head.value);
-
+        Stack<Tree> s1 = new Stack<>();
+        Stack<Tree> s2 = new Stack<>();
+        s1.push(head);
+        while (!s1.isEmpty()){
+            head = s1.pop();
+            s2.push(head);
+            if(head.left!=null){
+                s1.push(head.left);
             }
-            if (head.right != null) {
-                stack.add(head.right);
+            if(head.right!=null){
+                s1.push(head.right);
             }
         }
 
+        while (!s2.isEmpty()){
+            System.out.println(s2.pop().value);
+        }
     }
 
-
+    public static void width(Tree head){
+        if(head==null){
+            return;
+        }
+        Queue<Tree> queue = new LinkedList<>();
+        queue.add(head);
+        while (!queue.isEmpty()){
+             head = queue.poll();
+            System.out.println(head.value);
+            if(head.left!=null){
+                queue.add(head.left);
+            }
+            if(head.right!=null){
+                queue.add(head.right);
+            }
+        }
+    }
 }
 
