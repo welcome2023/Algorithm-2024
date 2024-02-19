@@ -13,13 +13,22 @@ import java.util.Stack;
  * @date 2024-02-17 22:16
  */
 public class SearchTree {
+    public static void main(String[] args) {
+        Tree head = new Tree(2);
+        head.left = new Tree(1);
+        head.right = new Tree(3);
+        System.out.println(isBST1(head));
+//        System.out.println(isBST2(head));
+//        System.out.println(isBST3(head));
+    }
+
     public static int preValue = Integer.MIN_VALUE;
 
-    public static boolean isBST(Tree head) {
+    public static boolean isBST1(Tree head) {
         if (head == null) {
             return true;
         }
-        boolean isLeftBst = isBST(head.left);
+        boolean isLeftBst = isBST1(head.left);
         if (!isLeftBst) {
             return false;
         }
@@ -28,16 +37,18 @@ public class SearchTree {
         } else {
             preValue = head.value;
         }
-        return isBST(head.right);
+        return isBST1(head.right);
     }
 
-    public static boolean checkBST(Tree head) {
+    public static boolean isBST2(Tree head) {
         List<Tree> inOrderList = new ArrayList<>();
         process(head, inOrderList);
+        int preValue = Integer.MIN_VALUE;
         for (Tree tree : inOrderList) {
             if (preValue >= tree.value) {
                 return false;
             }
+            preValue= tree.value;
         }
         return true;
     }
@@ -52,7 +63,7 @@ public class SearchTree {
     }
 
 
-    public static boolean checkBST1(Tree head) {
+    public static boolean isBST3(Tree head) {
         if (head != null) {
             int preValue = Integer.MIN_VALUE;
             Stack<Tree> stack = new Stack<>();
