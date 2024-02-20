@@ -15,7 +15,6 @@ public class BalancedTree {
     public static class ReturnType {
         public boolean isBalanced;
         public int height;
-
         public ReturnType(boolean isB, int hei) {
             this.isBalanced = isB;
             this.height = hei;
