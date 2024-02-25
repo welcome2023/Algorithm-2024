@@ -1,6 +1,7 @@
 package com;
 
 
+import com.algorithmtest.bean.Graph;
 import com.algorithmtest.bean.Tree;
 
 import java.util.*;
@@ -12,11 +13,9 @@ import java.util.*;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        int a = 3;
-        System.out.println((1 << a) -1);
 
 
-    }
+
+
 }
 
