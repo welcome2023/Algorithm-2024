@@ -8,6 +8,7 @@ import java.util.HashSet;
  * @date 2024-02-17 10:07
  */
 public class Graph {
+    // key:点的编号  value:实际的点
     public HashMap<Integer, Vertex> vertexs;
     public HashSet<Edge> edges;
     public Graph(){

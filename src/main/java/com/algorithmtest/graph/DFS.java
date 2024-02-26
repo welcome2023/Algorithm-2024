@@ -1,15 +1,16 @@
 package com.algorithmtest.graph;
 
-import com.algorithmtest.bean.Graph;
 import com.algorithmtest.bean.Vertex;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Stack;
 
 /**
  * @author cmsxyz@163.com
- * @date 2024-02-25 17:28
+ * @date 2024-02-26 20:55
+ * @usage 图的前序遍历
  */
-public class BFS {
+public class DFS {
     public static void main(String[] args) {
         Vertex root = new Vertex(1);
         Vertex child1 = new Vertex(3);
@@ -23,24 +24,27 @@ public class BFS {
         child2.nexts.add(child4);
         root.nexts.add(child2);
         child5.nexts.add(root);
-        bfs(root);
+        dfs(root);
     }
-
-    public static void bfs(Vertex node) {
-        if (node == null) {
+    public static void dfs(Vertex node){
+        if(node==null){
             return;
         }
-        Queue<Vertex> queue = new LinkedList<>();
-        Set<Vertex> set = new HashSet<>();
-        queue.add(node);
+        Stack<Vertex> stack = new Stack<>();
+        HashSet<Vertex> set = new HashSet<>();
+        stack.add(node);
         set.add(node);
-        while (!queue.isEmpty()) {
-            Vertex cur = queue.poll();
-            System.out.println(cur.value);
+        System.out.println(node.value);
+
+        while (!stack.isEmpty()){
+            Vertex cur = stack.pop();
             for (Vertex next : cur.nexts) {
-                if (!set.contains(next)) {
+                if(!set.contains(next)){
+                    stack.push(cur);
+                    stack.push(next);
                     set.add(next);
-                    queue.add(next);
+                    System.out.println(next.value);
+                    break;
                 }
             }
         }
