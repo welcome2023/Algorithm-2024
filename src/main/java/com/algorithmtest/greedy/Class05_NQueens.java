@@ -23,7 +23,7 @@ public class Class05_NQueens {
         for (int j = 0; j < n; j++) {
             if(isValid(record,i,j)){
                 record[i]=j;
-                res+=process1(i+!,record,n);
+                res+=process1(i+1,record,n);
             }
         }
         return res;
@@ -37,7 +37,7 @@ public class Class05_NQueens {
         }
         return true;
     }
-    //  n<32
+
     public static int num2(int n){
         if(n<1||n>32){
             return 0;
