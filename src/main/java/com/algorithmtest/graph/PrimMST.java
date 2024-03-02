@@ -23,10 +23,11 @@ public class PrimMST {
 
             if (!set.contains(node)) {
                 set.add(node);
+                for (Edge edge : node.edges) {
+                    priorityQueue.add(edge);
+                }
             }
-            for (Edge edge : node.edges) {
-                priorityQueue.add(edge);
-            }
+
             while (!priorityQueue.isEmpty()) {
                 Edge edge = priorityQueue.poll();
                 Vertex toNode = edge.to;

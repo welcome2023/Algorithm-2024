@@ -7,6 +7,7 @@ import com.algorithmtest.bean.Vertex;
 /**
  * @author cmsxyz@163.com
  * @date 2024-02-17 14:44
+ * @usage 通过邻接矩阵构建图
  */
 public class GraphGenerator {
     public static Graph createGraph(Integer[][]matrix){
