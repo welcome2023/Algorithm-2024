@@ -2,8 +2,6 @@ package com.algorithmtest.graph;
 
 import com.algorithmtest.bean.Edge;
 import com.algorithmtest.bean.Vertex;
-import com.algorithmtest.linklist.IsPalindromeList;
-import sun.reflect.generics.scope.DummyScope;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +12,7 @@ import java.util.Map;
  * @date 2024-02-28 20:02
  * @usage
  */
-public class Dijkstra {
+public class Class06_Dijkstra {
     public static HashMap<Vertex, Integer> dijkstra1(Vertex head) {
         HashMap<Vertex, Integer> distanceMap = new HashMap<>();
         distanceMap.put(head, 0);

@@ -13,7 +13,7 @@ import java.util.Set;
  * @date 2024-02-26 23:24
  * @usage
  */
-public class PrimMST {
+public class Class05_PrimMST {
     public static Set<Edge> primMST(Graph graph) {
         PriorityQueue<Edge> priorityQueue = new PriorityQueue<>();
         Set<Vertex> set = new HashSet<>();

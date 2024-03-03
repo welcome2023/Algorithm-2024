@@ -10,7 +10,7 @@ import java.util.Stack;
  * @date 2024-02-26 20:55
  * @usage 图的前序遍历
  */
-public class DFS {
+public class Class02_DFS {
     public static void main(String[] args) {
         Vertex root = new Vertex(1);
         Vertex child1 = new Vertex(3);

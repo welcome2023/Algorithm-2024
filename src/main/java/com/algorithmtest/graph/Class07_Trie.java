@@ -7,9 +7,9 @@ import com.algorithmtest.bean.TrieTree;
  * @date 2024-03-02 16:39
  * @usage
  */
-public class Trie {
+public class Class07_Trie {
     private TrieTree root;
-    public Trie() {
+    public Class07_Trie() {
         this.root=new TrieTree();
     }
     public void insert(String word){

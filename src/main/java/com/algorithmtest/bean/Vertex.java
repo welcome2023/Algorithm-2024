@@ -12,6 +12,14 @@ public class Vertex {
     public int out;
     public ArrayList<Vertex> nexts;
     public ArrayList<Edge> edges;
+    public Vertex(int value,int in,int out){
+        this.value=value;
+        this.in=in;
+        this.out=out;
+        this.nexts=new ArrayList<>();
+        this.edges=new ArrayList<>();
+    }
+
     public Vertex(int value){
         this.value=value;
         this.in=0;

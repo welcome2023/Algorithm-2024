@@ -1,6 +1,5 @@
 package com.algorithmtest.graph;
 
-import com.algorithmtest.bean.Graph;
 import com.algorithmtest.bean.Vertex;
 
 import java.util.*;
@@ -9,7 +8,7 @@ import java.util.*;
  * @author cmsxyz@163.com
  * @date 2024-02-25 17:28
  */
-public class BFS {
+public class Class01_BFS {
     public static void main(String[] args) {
         Vertex root = new Vertex(1);
         Vertex child1 = new Vertex(3);

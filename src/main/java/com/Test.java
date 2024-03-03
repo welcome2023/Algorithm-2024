@@ -1,10 +1,7 @@
 package com;
 
 
-import com.algorithmtest.bean.Graph;
-import com.algorithmtest.bean.Node;
-import com.algorithmtest.bean.Tree;
-import com.algorithmtest.bean.Vertex;
+import com.algorithmtest.bean.*;
 import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import jdk.management.resource.internal.inst.StaticInstrumentation;
 
@@ -18,43 +15,54 @@ import java.util.*;
  * getMax
  */
 public class Test {
-
     public static void main(String[] args) {
-        Vertex root = new Vertex(1);
-        Vertex child1 = new Vertex(3);
-        Vertex child2 = new Vertex(4);
-        Vertex child3 = new Vertex(5);
-        Vertex child4 = new Vertex(6);
-        Vertex child5 = new Vertex(2);
-        root.nexts.add(child1);
-        root.nexts.add(child3);
-        child1.nexts.add(child5);
-        child2.nexts.add(child4);
-        root.nexts.add(child2);
-        child5.nexts.add(root);
-        isbst(root);
+        Graph graph = new Graph();
+        Vertex v1 = new Vertex(1, 0, 2);
+        Vertex v2 = new Vertex(2, 1, 2);
+        Vertex v5 = new Vertex(5, 2, 1);
+        Vertex v6 = new Vertex(6, 2, 0);
+        Vertex v7 = new Vertex(7, 1, 1);
+        v1.nexts.add(v5);
+        v1.nexts.add(v2);
+        v2.nexts.add(v5);
+        v2.nexts.add(v6);
+        v5.nexts.add(v7);
+        v7.nexts.add(v6);
+        graph.vertexs.put(1, v1);
+        graph.vertexs.put(2, v2);
+        graph.vertexs.put(5, v5);
+        graph.vertexs.put(6, v6);
+        graph.vertexs.put(7, v7);
+        graph.edges.add(new Edge(2, v1, v2));
+        graph.edges.add(new Edge(5, v1, v5));
+        graph.edges.add(new Edge(3, v2, v5));
+        graph.edges.add(new Edge(7, v2, v6));
+        graph.edges.add(new Edge(6, v5, v7));
+        graph.edges.add(new Edge(9, v7, v6));
+        System.out.println(graph);
     }
-    public static void isbst(Vertex node){
-        if(node==null){
-            return;
+    public static void sortTology(Graph graph){
+        Map<Vertex, Integer> inMap = new HashMap<>();
+        Queue<Vertex> zeroInVertex = new LinkedList<>();
+        for (Vertex vertex : graph.vertexs.values()) {
+            inMap.put(vertex,vertex.in);
+            if(vertex.in==0){
+                zeroInVertex.add(vertex);
+            }
         }
-        Stack<Vertex> stack = new Stack<>();
-        Set<Vertex> set = new HashSet<>();
-        stack.add(node);
-        set.add(node);
-        System.out.println(node.value);
-        while (!stack.isEmpty()){
-            Vertex cur = stack.pop();
+        while (!zeroInVertex.isEmpty()){
+            Vertex cur = zeroInVertex.poll();
+            System.out.println(cur.value);
             for (Vertex next : cur.nexts) {
-                if(!set.contains(next)){
-                    stack.add(cur);
-                    stack.add(next);
-                    set.add(next);
-                    System.out.println(next.value);
-                    break;
+                inMap.put(next,inMap.get(next)-1);
+                if(inMap.get(next)==0){
+                    zeroInVertex.add(next);
                 }
             }
+
         }
     }
 }
+
+
 

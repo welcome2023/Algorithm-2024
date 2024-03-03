@@ -1,7 +1,5 @@
 package com.algorithmtest.graph;
 
-import com.algorithmtest.bean.Edge;
-import com.algorithmtest.bean.Graph;
 import com.algorithmtest.bean.Vertex;
 
 import java.util.*;
@@ -11,7 +9,7 @@ import java.util.*;
  * @date 2024-02-26 22:57
  * @usage
  */
-public class KruskalMST {
+public class Class04_KruskalMST {
 //    public static Set<Edge> kruskalMST(Graph graph) {
 //        UnionFind unionFind = new UnionFind();
 //        unionFind.makeSets(graph.vertexs.values());
