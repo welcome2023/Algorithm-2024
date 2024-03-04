@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * @author cmsxyz@163.com
  * @date 2024-02-26 21:58
- * @usage
+ * @usage 有向无环图的拓扑排序，必定有入度为0的点
  */
 public class Class03_SortedTopology {
     public static void main(String[] args) {
