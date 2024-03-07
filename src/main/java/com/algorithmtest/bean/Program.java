@@ -13,5 +13,9 @@ public class Program {
         this.start=start;
         this.end=end;
     }
+    public Program(){
+        this.start=0;
+        this.end=0;
+    }
 
 }

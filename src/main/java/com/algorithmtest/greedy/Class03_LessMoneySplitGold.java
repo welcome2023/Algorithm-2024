@@ -1,5 +1,7 @@
 package com.algorithmtest.greedy;
 
+import com.algorithmtest.bean.Student;
+
 import java.util.PriorityQueue;
 
 /**
@@ -8,6 +10,11 @@ import java.util.PriorityQueue;
  * @usage
  */
 public class Class03_LessMoneySplitGold {
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3};
+        System.out.println(lessMoney(arr));
+    }
     public static int lessMoney(int []arr){
         PriorityQueue<Integer> pQ = new PriorityQueue<>();
         for (int i = 0; i < arr.length; i++) {

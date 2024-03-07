@@ -9,6 +9,13 @@ import java.util.PriorityQueue;
  * @usage
  */
 public class Class04_IPO {
+    /**
+     * @param k:可以做几个项目
+     * @param w:初始资金
+     * @param profits:利润
+     * @param capital:花费
+     * @return
+     */
     public static int findMaximizedCapital(int k,int w,int []profits,int []capital){
         PriorityQueue<Node> minCostQ = new PriorityQueue<>(new MinCostComparator());
         PriorityQueue<Node> maxProfitQ = new PriorityQueue<>(new MaxProfitComparator());

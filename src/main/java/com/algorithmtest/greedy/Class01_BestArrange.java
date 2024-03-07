@@ -11,6 +11,16 @@ import java.util.Arrays;
  * @usage
  */
 public class Class01_BestArrange {
+    public static void main(String[] args) {
+        Program[] pro = new Program[6];
+        pro[0]=new Program(1,3);
+        pro[1]=new Program(2,3);
+        pro[2]=new Program(3,6);
+        pro[3]=new Program(3,5);
+        pro[4]=new Program(4,7);
+        pro[5]=new Program(5,6);
+        System.out.println(bestArrange(pro, 2));
+    }
     public static int bestArrange(Program[] programs, int timePoint) {
         Arrays.sort(programs, new ProgramComparator());
         int result = 0;
