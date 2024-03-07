@@ -1,4 +1,4 @@
-package com.algorithmtest.compare;
+package com.algorithmtest.utils;
 
 import com.algorithmtest.bean.Program;
 

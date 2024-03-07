@@ -1,7 +1,7 @@
 package com.algorithmtest.greedy;
 
 import com.algorithmtest.bean.Program;
-import com.algorithmtest.compare.ProgramComparator;
+import com.algorithmtest.utils.ProgramComparator;
 
 import java.util.Arrays;
 

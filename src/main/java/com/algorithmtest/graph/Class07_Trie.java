@@ -12,6 +12,16 @@ public class Class07_Trie {
     public Class07_Trie() {
         this.root=new TrieTree();
     }
+    public static void main(String[] args) {
+        Class07_Trie node = new Class07_Trie();
+        node.insert("a");
+        node.insert("aab");
+        node.insert("abc");
+        int ab = node.prefixNumber("a");
+        System.out.println(ab);
+
+    }
+
     public void insert(String word){
         if(word==null){
             return;
