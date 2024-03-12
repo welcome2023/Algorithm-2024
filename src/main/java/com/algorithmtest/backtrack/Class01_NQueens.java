@@ -1,11 +1,11 @@
-package com.algorithmtest.greedy;
+package com.algorithmtest.backtrack;
 
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-02 17:21
  * @usage
  */
-public class Class05_NQueens {
+public class Class01_NQueens {
 
     public static void main(String[] args) {
         System.out.println(num1(4));
