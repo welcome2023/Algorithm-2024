@@ -6,7 +6,6 @@ package com.algorithmtest.backtrack;
  * @usage
  */
 public class Class01_NQueens {
-
     public static void main(String[] args) {
         System.out.println(num1(4));
     }
@@ -40,7 +39,6 @@ public class Class01_NQueens {
         }
         return res;
     }
-
     // i 行   j  列  record 所有的结果
     private static boolean isValid(int[] record, int i, int j) {
         for (int k = 0; k < i; k++) {
