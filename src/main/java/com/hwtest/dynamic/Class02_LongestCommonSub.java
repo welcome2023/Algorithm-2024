@@ -1,13 +1,11 @@
 package com.hwtest.dynamic;
 
-import java.util.Arrays;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-24 23:25
  * @usage
  */
-public class LongestCommonSub {
+public class Class02_LongestCommonSub {
     public static void main(String[] args) {
         System.out.println(longestCommonSubsequence("abcdefghj", "bdfj"));
     }

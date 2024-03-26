@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @date 2024-03-18 22:48
  * @usage 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
  */
-public class FindKthLargest {
+public class Class01_FindKthLargest {
     public static void main(String[] args) {
         int []arr={2,4,1,2,6};
         System.out.println(findKLargest(arr, 1));

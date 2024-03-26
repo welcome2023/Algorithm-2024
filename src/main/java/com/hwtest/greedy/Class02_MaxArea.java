@@ -1,13 +1,11 @@
 package com.hwtest.greedy;
 
-import javax.swing.*;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-21 22:03
  * @usage
  */
-public class MaxArea {
+public class Class02_MaxArea {
     public static void main(String[] args) {
         System.out.println(maxArea2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
     }

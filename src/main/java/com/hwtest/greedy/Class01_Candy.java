@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 相邻两个孩子评分更高的孩子会获得更多的糖果。
  * 请你给每个孩子分发糖果，计算并返回需要准备的 最少糖果数目 。
  */
-public class Candy {
+public class Class01_Candy {
     public static void main(String[] args) {
         int []arr={2,1,4};
         System.out.println(candy(arr));

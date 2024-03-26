@@ -5,7 +5,7 @@ package com.hwtest.dynamic;
  * @date 2024-03-24 23:00
  * @usage
  */
-public class MaxSubArraySum {
+public class Class01_MaxSubArraySum {
     public static void main(String[] args) {
         int []arr={1,6,3,-2,4,-1,-9,4};
         System.out.println(maxSubArray(arr));
