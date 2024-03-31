@@ -9,7 +9,7 @@ import java.util.TreeSet;
  * @date 2024-03-30 14:15
  * @usage
  */
-public class Sort {
+public class Class02_Sort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int k = sc.nextInt();

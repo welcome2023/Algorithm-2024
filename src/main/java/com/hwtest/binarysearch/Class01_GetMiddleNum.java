@@ -1,14 +1,11 @@
 package com.hwtest.binarysearch;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-26 23:21
  * @usage
  */
-public class GetMiddleNum {
+public class Class01_GetMiddleNum {
     public static void main(String[] args) {
         int[] a1 = {1, 2, 7};
         int[] a2 = {4, 7, 8};

@@ -7,7 +7,7 @@ import java.util.*;
  * @date 2024-03-29 23:05
  * @usage
  */
-public class GroupAnagrams {
+public class Class01_GroupAnagrams {
     public static void main(String[] args) {
         String []strs={"eat", "tea", "tan", "ate", "nat", "bat"};
         List<List<String>> lists = groupAnagrams(strs);

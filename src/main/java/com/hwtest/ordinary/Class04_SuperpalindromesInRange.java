@@ -1,14 +1,11 @@
 package com.hwtest.ordinary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-30 15:57
  * @usage
  */
-public class SuperpalindromesInRange {
+public class Class04_SuperpalindromesInRange {
     public static void main(String[] args) {
         System.out.println(superpalindromesInRange("4", "1000"));
     }

@@ -1,7 +1,5 @@
 package com.hwtest.tree;
 
-import javax.swing.tree.TreeNode;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-27 22:13
@@ -11,7 +9,7 @@ import javax.swing.tree.TreeNode;
  * 递归返回结果:output=自己+max(左,右)
  * 递归过程中,找到maxSum=max(maxSum,sum)
  */
-public class MaxPathSum {
+public class Class01_MaxPathSum {
     static int maxSum = Integer.MIN_VALUE;
 
     public static void main(String[] args) {

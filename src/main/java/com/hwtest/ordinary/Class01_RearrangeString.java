@@ -1,13 +1,11 @@
 package com.hwtest.ordinary;
 
-import java.util.Scanner;
-
 /**
  * @author cmsxyz@163.com
  * @date 2024-03-30 11:09
  * @usage
  */
-public class RearrangeString {
+public class Class01_RearrangeString {
     public static void main(String[] args) {
         System.out.println(getMaxSodas(6));
     }
