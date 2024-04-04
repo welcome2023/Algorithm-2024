@@ -1,5 +1,7 @@
 package com.hwtest.window;
 
+import java.util.HashMap;
+
 /**
  * @author cmsxyz@163.com
  * @date 2024-04-05 0:44
@@ -7,41 +9,46 @@ package com.hwtest.window;
  */
 public class Class05_MinWindow {
     public static void main(String[] args) {
-        System.out.println(minWindow("adcgssc", "cs"));
-    }
-    public static String minWindow(String S, String T) {
-        //准备工作
-        char[] s = S.toCharArray();
-        char[] t = T.toCharArray();
-        int[] cnt = new int[128]; // 用于存储字符串 T 中每个字符的出现次数
-        int count = 0; // 用于记录需匹配的字符数的变量
-        for(int i = 0; i < t.length; i++){
-            cnt[t[i] - 'A']++;
-            count++;
-        }
-        //核心代码
-        int l = 0, start = -1, end = s.length;
-        for(int r = 0; r < s.length; r++){
-            // 当遇到 S 中的字符时，检查并更新计数数组
-            if(--cnt[s[r] - 'A'] >= 0){
-                count--; // 减少需要匹配的字符计数
-            }
-            //当count为0时，说明已经全部匹配完成，接下来就是右移左指针寻找最小字符串
-            while(count == 0){
-                //此时左指针不能继续收缩
-                if (++cnt[s[l] - 'A'] > 0) {
-                    //记录下标
-                    if(r - l < end - start){
-                        start = l;
-                        end = r;
-                    }
-                    count++; // 增加计数，接下来l++后，一个字符将不再包含在窗口中
-                }
-                l++;
-            }
-        }
-        // 返回最小窗口子串，如果没有找到有效窗口，则返回空字符串
-        return start == -1 ? "" : S.substring(start, end + 1);
-    }
+        System.out.println(minWindow("abaccb", "bc"));
 
+    }
+    public static String minWindow(String source, String target) {
+        HashMap<Character,Integer> need = new HashMap<>();
+        HashMap<Character,Integer> window = new HashMap<>();
+        for(char ch : target.toCharArray()) {
+            need.put(ch,need.getOrDefault(ch,0) + 1); // 若找到，则++；未找到，则默认为0+1
+        }
+        int left = 0;
+        int right = 0;
+        int valid = 0;
+        int start = 0;
+        int len = Integer.MAX_VALUE;
+        while(right < source.length()) {
+            char c = source.charAt(right);
+            right++;
+            // 判断
+            if(need.containsKey(c)) {
+                window.put(c,window.getOrDefault(c,0) + 1);
+                if(window.get(c).equals(need.get(c))) {
+                    valid++;
+                }
+            }
+
+            while(valid == need.size()) {
+                if(right - left < len) {
+                    start = left;
+                    len = right -left;
+                }
+                char d = source.charAt(left);
+                left++;
+                if(need.containsKey(d)) {
+                    if(window.get(d).equals(need.get(d))){
+                        valid--;
+                    }
+                    window.put(d, window.getOrDefault(d, 0) - 1);
+                }
+            }
+        }
+        return len == Integer.MAX_VALUE ? "" : source.substring(start, start + len);
+    }
 }
