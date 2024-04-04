@@ -1,8 +1,6 @@
 package com.hwtest.backtrack;
 
-import javax.lang.model.element.VariableElement;
 import java.util.*;
-import java.util.logging.Level;
 
 /**
  * @author cmsxyz@163.com

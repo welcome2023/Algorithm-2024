@@ -2,7 +2,6 @@ package com.hwtest.matrix;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
 /**
  * @author cmsxyz@163.com
