@@ -5,7 +5,7 @@ package com.hwtest.ordinary;
  * @date 2024-03-30 15:57
  * @usage
  */
-public class Class04_SuperpalindromesInRange {
+public class Class03_SuperpalindromesInRange {
     public static void main(String[] args) {
         System.out.println(superpalindromesInRange("4", "1000"));
     }

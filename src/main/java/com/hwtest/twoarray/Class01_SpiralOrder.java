@@ -1,4 +1,4 @@
-package com.hwtest.ordinary;
+package com.hwtest.twoarray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @date 2024-03-30 16:43
  * @usage
  */
-public class Class03_SpiralOrder {
+public class Class01_SpiralOrder {
     public static void main(String[] args) {
         int[][] arr = {{1, 2, 3, 4}, {4, 5, 6, 7}, {7, 8, 9, 10}};
         List<Integer> integers = spiralOrder(arr);
