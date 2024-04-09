@@ -1,7 +1,5 @@
 package com.algorithmtest.sort;
 
-import sun.java2d.pipe.SpanIterator;
-
 /**
  * @createDate 2024-01-01 10:34
  * 在每一次n-i+1次的比较中,选择最小/最大的记录,放在i的位置,

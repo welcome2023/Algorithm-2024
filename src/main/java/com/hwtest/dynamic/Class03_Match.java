@@ -33,6 +33,7 @@ public class Class03_Match {
     }
 
     public static boolean matches(String s, String p, int i, int j) {
+        // i从0开始，j从1开始，往前回溯时 if i==0,i-1则报错
         if (i == 0) {
             return false;
         }
