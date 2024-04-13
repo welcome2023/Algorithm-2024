@@ -11,23 +11,24 @@ public class Class03_LongestOnes {
         System.out.println(getSum(arr, 1));
     }
 
-    public static int getSum(int[] arr, int k) {
-        int l = 0, r = 0, count = 0, res = 0;
-        while (r < arr.length) {
-            if (arr[r] == 0) {
-                count++;
+    public static int getSum(int[] A, int K) {
+        int N = A.length;
+        int res = 0;
+        int left = 0, right = 0;
+        int zeros = 0;
+        while (right < N) {
+            if (A[right] == 0)
+                zeros ++;
+            while (zeros > K) {
+                if (A[left++] == 0)
+                    zeros --;
             }
-            if (count > k) {
-                if (arr[l] == 0) {
-                    count--;
-                }
-                l++;
-            }
-            res = Math.max(res, r - l + 1);
-            r++;
+            res = Math.max(res, right - left + 1);
+            right ++;
         }
         return res;
     }
 
+    }
 
-}
+

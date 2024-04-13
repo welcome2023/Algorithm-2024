@@ -5,5 +5,6 @@ package com;
  * getMax
  */
 public class Test {
+
 }
 

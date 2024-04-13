@@ -14,22 +14,6 @@ public class Class01_LargestRectangleArea {
         System.out.println(largestRectangleArea1(arr));
     }
 
-    public static int largestRectangleArea(int[] heights) {
-        int maxArea = 0;
-        for (int i = 0; i < heights.length; i++) {
-            int left = i;
-            while (left - 1 >= 0 && heights[left - 1] >= heights[i]) {
-                left--;
-            }
-            int right = i;
-            while (right + 1 < heights.length && heights[right + 1] >= heights[i]) {
-                right++;
-            }
-            maxArea = Math.max(maxArea, heights[i] * (right - left + 1));
-        }
-        return maxArea;
-    }
-
     public static int largestRectangleArea1(int[] heights) {
         // 1.给heights加两个哨兵
         int len = heights.length;
@@ -41,8 +25,6 @@ public class Class01_LargestRectangleArea {
         System.arraycopy(heights, 0, newHeights, 1, len);
         len += 2;
         heights = newHeights;
-
-
 
         // 2.
         Deque<Integer> stack = new ArrayDeque<>(len);
