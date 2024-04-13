@@ -6,8 +6,7 @@ package com;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("cms,最后一题,加油!!!");
+        System.out.println("华为第二轮-复习完结-撒花!!!");
     }
-
 }
 

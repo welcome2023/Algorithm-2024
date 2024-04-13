@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class Class05_MinWindow {
     public static void main(String[] args) {
         System.out.println(minWindow("abaccb", "bc"));
-
     }
     public static String minWindow(String source, String target) {
         HashMap<Character,Integer> need = new HashMap<>();
@@ -23,11 +22,6 @@ public class Class05_MinWindow {
         int count = 0;
         int start = 0;
         int len = Integer.MAX_VALUE;
-
-
-
-
-
         while(right < source.length()) {
             char c = source.charAt(right);
             right++;
@@ -38,7 +32,6 @@ public class Class05_MinWindow {
                     count++;
                 }
             }
-
             while(count == need.size()) {
                 if(right - left < len) {
                     start = left;
@@ -52,8 +45,6 @@ public class Class05_MinWindow {
                     }
                     window.put(d, window.getOrDefault(d, 0) - 1);
                 }
-
-
             }
         }
         return len == Integer.MAX_VALUE ? "" : source.substring(start, start + len);
