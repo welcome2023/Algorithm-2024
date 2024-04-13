@@ -5,6 +5,9 @@ package com;
  * getMax
  */
 public class Test {
+    public static void main(String[] args) {
+        System.out.println("cms,最后一题,加油!!!");
+    }
 
 }
 
