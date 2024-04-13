@@ -20,9 +20,14 @@ public class Class05_MinWindow {
         }
         int left = 0;
         int right = 0;
-        int valid = 0;
+        int count = 0;
         int start = 0;
         int len = Integer.MAX_VALUE;
+
+
+
+
+
         while(right < source.length()) {
             char c = source.charAt(right);
             right++;
@@ -30,11 +35,11 @@ public class Class05_MinWindow {
             if(need.containsKey(c)) {
                 window.put(c,window.getOrDefault(c,0) + 1);
                 if(window.get(c).equals(need.get(c))) {
-                    valid++;
+                    count++;
                 }
             }
 
-            while(valid == need.size()) {
+            while(count == need.size()) {
                 if(right - left < len) {
                     start = left;
                     len = right -left;
@@ -43,10 +48,12 @@ public class Class05_MinWindow {
                 left++;
                 if(need.containsKey(d)) {
                     if(window.get(d).equals(need.get(d))){
-                        valid--;
+                        count--;
                     }
                     window.put(d, window.getOrDefault(d, 0) - 1);
                 }
+
+
             }
         }
         return len == Integer.MAX_VALUE ? "" : source.substring(start, start + len);

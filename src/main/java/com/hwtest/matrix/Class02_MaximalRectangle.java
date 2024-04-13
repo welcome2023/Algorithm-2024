@@ -20,8 +20,10 @@ public class Class02_MaximalRectangle {
         }
         int n = matrix[0].length;
         //存放每行高度
+        // 数据结构用list来装每行的结果
         List<int[]> allHeights = new ArrayList<>();
         for (int i = m - 1; i >= 0; i--) {
+            // 每一行都要重新创建数组,一行是一个元素,放在外面会被替换
             int[] heights = new int[n + 2];
             for (int j = 0; j < n; j++) {
                 int k = i;
