@@ -5,7 +5,9 @@ import java.util.*;
 /**
  * @author cmsxyz@163.com
  * @date 2024-04-16 2:21
- * @usage
+ * @usage 和小明身高差绝对值最小的小朋友排在前面，和小明
+ * 身高差绝对值最大的小朋友排在最后，如果两个小朋友和小明身高差一样，则个子较小的小
+ * 朋友排在前面。
  */
 public class Class07_Java_BodyHightSort {
     public static void main(String[] args) {
