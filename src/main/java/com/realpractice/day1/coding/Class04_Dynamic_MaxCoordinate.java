@@ -15,12 +15,9 @@ public class Class04_Dynamic_MaxCoordinate {
         int[] dp = new int[arr.length+1];
         dp[0] = 0;
         for (int i = 1; i <= arr.length; i++) {
-            if (arr[i-1] == num && num < 0) {
-                dp[i] = dp[i - 1] + arr[i-1] - 1;
-            } else if (arr[i-1] == num && num > 0) {
-                dp[i] = dp[i - 1] + arr[i-1] + 1;
-            } else {
-                dp[i] = dp[i -1] + arr[i-1];
+            dp[i] = dp[i - 1] + arr[i-1];
+            if (arr[i-1] == num ) {
+                dp[i]+=arr[i-1]/Math.abs(arr[i-1]);
             }
             max= Math.max(max,dp[i]);
         }
