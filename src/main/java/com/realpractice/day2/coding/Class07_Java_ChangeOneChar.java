@@ -1,8 +1,9 @@
 package com.realpractice.day2.coding;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * @author cmsxyz@163.com
@@ -13,61 +14,33 @@ import java.util.PriorityQueue;
  */
 public class Class07_Java_ChangeOneChar {
     public static void main(String[] args) {
-        String str = "aera";
-        char[] cArr = str.toCharArray();
-        char tmp = cArr[0];
-        int tmpIndex = 0;
-        for (int left = 0; left < cArr.length; left++) {
-            tmp = cArr[left];
-            tmpIndex = left;
-            for (int i = left; i < cArr.length; i++) {
-                if (cArr[i] < tmp) {
-                    tmp = cArr[i];
-                    tmpIndex = i;
-                }
-            }
-
-            if (tmpIndex != left) {
-                cArr[tmpIndex] = cArr[left];
-                cArr[left] = tmp;
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        TreeMap<Integer, Character> map = new TreeMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            map.put(i, str.charAt(i));
+        }
+        PriorityQueue<Map.Entry<Integer, Character>> heap = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+        heap.addAll(map.entrySet());
+        char[] c = str.toCharArray();
+        for (int i = 0; i < c.length; i++) {
+            assert heap.peek() != null;
+            if (c[i] == heap.peek().getValue()) {
+                heap.poll();
+            } else {
+                Map.Entry<Integer, Character> current = heap.poll();
+                getRes(c, current.getKey(), i);
                 break;
             }
         }
-
-        str = String.valueOf(cArr);
-        System.out.println(str);
-
+        for (char c1 : c) {
+            System.out.println(c1);
+        }
     }
-
-    public static String getRes(String st) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        PriorityQueue<Map.Entry<Character, Integer>> heap = new PriorityQueue<>((a,b)->a.getKey()-b.getKey());
-        for (int i = 0; i < st.length(); i++) {
-            map.put(st.charAt(i), i);
-        }
-        heap.addAll(map.entrySet());
-        StringBuilder sb = new StringBuilder();
-        int change = 1;
-        int index = Integer.MAX_VALUE;
-        int flag = -1;
-
-        for (int i = 0; i < st.length(); i++) {
-            if (!heap.isEmpty() && (st.charAt(i) == heap.peek().getKey() || change == 0)) {
-                if (i == index) {
-                    sb.append(st.charAt(flag));
-                    continue;
-                }
-                sb.append(st.charAt(i));
-                heap.poll();
-            } else {
-                Map.Entry<Character, Integer> minMap = heap.peek();
-                index = minMap.getValue();
-                flag = i;
-                sb.append(minMap.getKey());
-                change--;
-            }
-        }
-        return sb.toString();
+    public static void getRes(char[] arr, int i, int j) {
+        char tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
 }

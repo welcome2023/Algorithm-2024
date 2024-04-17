@@ -1,5 +1,7 @@
 package com.realpractice.day2.coding;
 
+import java.util.Scanner;
+
 /**
  * @author cmsxyz@163.com
  * @date 2024-04-14 23:06
@@ -7,33 +9,31 @@ package com.realpractice.day2.coding;
  */
 public class Class03_Window_Largestsub2 {
     public static void main(String[] args) {
-        System.out.println(getRes1("alolobo"));
-    }
-    public static int getRes(String str) {
-        String sCircle = str + str;
-        int maxLength = 0;
-        for (int i = 0; i < str.length(); i++) {
-            int count = 0;
-            for (int j = i; j < i + str.length(); j++) {
-                if (sCircle.charAt(j) == 'o') {
-                    count++;
-                }
-                if (count % 2 == 0) {
-                    maxLength = Math.max(maxLength, j - i + 1);
-                }
-            }
-        }
-        return maxLength;
+        Scanner sc = new Scanner(System.in);
+        String st = sc.nextLine();
+        System.out.println(getRes(st));
     }
 
-
-    public static int getRes1(String str){
-        int count=0;
-        for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i)=='o'){
-                count++;
+    public static int getRes(String st) {
+        char[] cha = st.toCharArray();
+        int count = 0, left = 0, right = 0, num = 0;
+        while (right < cha.length) {
+            if (!isNumber(cha, right)) {
+                num++;
             }
+            while (num > 1) {
+                if(!isNumber(cha, left)){
+                    num--;
+                }
+                left++;
+            }
+            count = Math.max(count, right - left + 1);
+            right++;
         }
-        return count%2==0? str.length():str.length()-1;
+        return count;
+    }
+
+    public static boolean isNumber(char[] cha, int i) {
+        return cha[i] - 1 >= 47 && cha[i] - 1 <= 56;
     }
 }

@@ -23,8 +23,8 @@ public class Class07_Java_GetMinSumK {
             int key = sc.nextInt();
             long sum = 0;
             List<Integer> list = new ArrayList<>();
-            for (int i = 1; i < arr1.length; i++) {
-                for (int j = 1; j < arr2.length; j++) {
+            for (int i = 0; i < arr1.length; i++) {
+                for (int j = 0; j < arr2.length; j++) {
                     list.add(Integer.parseInt(arr1[i]) + Integer.parseInt(arr2[j]));
                 }
             }

@@ -1,9 +1,6 @@
 package com.realpractice.day2.coding;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author cmsxyz@163.com
@@ -12,40 +9,29 @@ import java.util.Set;
  */
 public class Class06_Array_MaxMinN {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()) {
-            int m = scanner.nextInt();
-            int[] ary = new int[m];
-            for (int i = 0; i < ary.length; i++) {
-                ary[i] = scanner.nextInt();
-            }
-            int n = scanner.nextInt();
-            int resAry =getRes(ary, n);
-            System.out.println(resAry);
-        }
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        int m = sc.nextInt();
+        System.out.println(getRes(arr, m));
     }
-
-    public static int getRes(int[] ary, int n) {
-        int res = -1;
-        Set<Integer> set = new HashSet<>();
-        for (int a : ary) {
-            set.add(a);
+    public static int getRes(int []arr,int m){
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], i);
         }
-        int sz = set.size();
-        if (2 * n > sz) {
-            return res;
+        Arrays.sort(arr);
+        int len = map.size();
+        int sum = 0;
+        for (int i = 0; i < len && m > 0; i++, m--) {
+            if (map.firstKey().equals(map.lastKey())) {
+                return -1;
+            }
+            sum += map.firstKey() + map.lastKey();
+            map.remove(map.firstKey());
+            map.remove(map.lastKey());
         }
-
-
-        int count = 0;
-        for (Integer s : set) {
-            ary[count++] = s;
-        }
-        Arrays.sort(ary, 0, count);
-        res = 0;
-        for (int i = 0; i < n; i++) {
-            res += ary[i] + ary[count - 1 - i];
-        }
-        return res;
+        return sum;
     }
 }
