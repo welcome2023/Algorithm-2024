@@ -1,4 +1,4 @@
-package com.realpractice;
+package com.realpractice.day2.coding;
 
 /**
  * @author cmsxyz@163.com
