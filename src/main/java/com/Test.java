@@ -1,8 +1,5 @@
 package com;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * @createDate 2023-12-25 22:52
  * getMax
