@@ -5,7 +5,11 @@ package com;
  * getMax
  */
 public class Test {
-
+    public static void main(String[] args) {
+       String a="00101010";
+        String[] sp = a.split("0+");
+        System.out.print(sp.length);
+    }
 }
 
 
