@@ -2,3 +2,4 @@
     day1:Class01_Greedy_ProfitMax
     day4:Class04_Backtrack_StrConnect
     day5:Class04_Java_Martian
+    day6:Class04_Java_Robot
