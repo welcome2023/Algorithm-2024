@@ -3,3 +3,5 @@
     day4:Class04_Backtrack_StrConnect
     day5:Class04_Java_Martian
     day6:Class04_Java_Robot
+    day7:Class02_Backtrack_WebServerNum
+    day7:Class04_Tree_Tree3Height
