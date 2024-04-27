@@ -5,3 +5,5 @@
     day6:Class04_Java_Robot
     day7:Class02_Backtrack_WebServerNum
     day7:Class04_Tree_Tree3Height
+    day8:Class02_Java_Depend
+    day8:Class04_Graph_MinSpend
