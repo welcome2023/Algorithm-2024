@@ -15,10 +15,10 @@ public class BinaryTreeUnRecurErgodic {
         Tree head = new Tree(1);
         head.left = new Tree(2);
         head.right = new Tree(3);
-        head.left.left=new Tree(4);
-        head.left.right=new Tree(5);
-        head.right.left=new Tree(6);
-        head.right.right=new Tree(7);
+        head.left.left = new Tree(4);
+        head.left.right = new Tree(5);
+        head.right.left = new Tree(6);
+        head.right.right = new Tree(7);
         width(head);
     }
 
@@ -35,6 +35,25 @@ public class BinaryTreeUnRecurErgodic {
                 }
                 if (head.left != null) {
                     stack.push(head.left);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+
+    public static void inOrderUnRecur(Tree head) {
+        System.out.println("in-order ");
+        if (head != null) {
+            Stack<Tree> stack = new Stack<>();
+            while (!stack.isEmpty() || head != null) {
+                if (head != null) {
+                    stack.push(head);
+                    head = head.left;
+                } else {
+                    head = stack.pop();
+                    System.out.println(head.value + " ");
+                    head = head.right;
                 }
             }
         }
@@ -64,37 +83,20 @@ public class BinaryTreeUnRecurErgodic {
         }
     }
 
-    public static void inOrderUnRecur(Tree head){
-        System.out.println("in-order ");
-        if(head!=null){
-            Stack<Tree> stack = new Stack<>();
-            while (!stack.isEmpty()|| head!=null){
-                if(head!=null){
-                    stack.push(head);
-                    head=head.left;
-                }else {head=stack.pop();
-                    System.out.println(head.value+" ");
-                    head=head.right;
-                }
-            }
-        }
-        System.out.println();
 
-    }
-
-    public static void width(Tree head){
-        if(head==null){
+    public static void width(Tree head) {
+        if (head == null) {
             return;
         }
         Queue<Tree> queue = new LinkedList<>();
         queue.add(head);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             Tree cur = queue.poll();
             System.out.println(cur.value);
-            if(cur.left!=null){
+            if (cur.left != null) {
                 queue.add(cur.left);
             }
-            if(cur.right!=null){
+            if (cur.right != null) {
                 queue.add(cur.right);
             }
         }

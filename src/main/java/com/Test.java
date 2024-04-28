@@ -1,8 +1,5 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -11,30 +8,27 @@ import java.util.Scanner;
  */
 public class Test {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        sc.nextLine();
-        ArrayList<Map<String, Integer>> list = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            String[] arr = sc.nextLine().split("/");
-            for (int j = 0; j < arr.length; j++) {
-                HashMap<String, Integer> map = new HashMap<>();
-                if(list.size()<=j){
-                    map.put(arr[j],1);
-                    list.add(map);
-                }else {
-                    Map<String, Integer> map1 = list.get(j);
-                    if(map1.containsKey(arr[j])){
-                        map1.put(arr[j],map1.get(arr[j])+1);
-                    }else {
-                        map1.put(arr[j],1);
-                    }
-                }
-            }
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        int n = in.nextInt();
+        in.close();
+        long startTime = System.currentTimeMillis();
+        int nL = 0; //n 的位数
+        while (n >= Math.pow(10, nL)) {
+            nL++;
         }
-        String[] arr = sc.nextLine().split(" ");
-        Map<String, Integer> map = list.get(Integer.parseInt(arr[0]));
-        System.out.println(map.getOrDefault(arr[1], null));
+        for (int i = nL; i > 0; i--) {
+            int gw = n % (int) Math.pow(10, i) / (int) Math.pow(10, i - 1); //i 的位数
+            if (gw > 4) {
+                n -= (int) Math.pow(10, i - 1);
+            }
+            int a = n / (int) Math.pow(10, i - 1);
+            int b = a / 10;
+            n -= b * (int) Math.pow(10, i - 1);
+        }
+        System.out.println(n);
+        long endTime = System.currentTimeMillis();
+        System.out.println("程序执行时间：" + (endTime - startTime) + "ms");
     }
 }
 
