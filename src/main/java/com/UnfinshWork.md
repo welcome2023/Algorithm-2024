@@ -4,6 +4,7 @@
     day5:Class04_Java_Martian
     day6:Class04_Java_Robot
     day7:Class02_Backtrack_WebServerNum
-    day7:Class04_Tree_Tree3Height
-    day8:Class02_Java_Depend
-    day8:Class04_Graph_MinSpend
+    day8:Class04_Graph_MinSpend 
+    day10:Class04_Tree_SequenceTraversal
+总结：
+    1.输入输入hashNext和sc.nextInt使用的区别

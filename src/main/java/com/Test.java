@@ -1,6 +1,6 @@
 package com;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @createDate 2023-12-25 22:52
@@ -8,27 +8,47 @@ import java.util.Scanner;
  */
 public class Test {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        // 注意 hasNext 和 hasNextLine 的区别
-        int n = in.nextInt();
-        in.close();
-        long startTime = System.currentTimeMillis();
-        int nL = 0; //n 的位数
-        while (n >= Math.pow(10, nL)) {
-            nL++;
-        }
-        for (int i = nL; i > 0; i--) {
-            int gw = n % (int) Math.pow(10, i) / (int) Math.pow(10, i - 1); //i 的位数
-            if (gw > 4) {
-                n -= (int) Math.pow(10, i - 1);
+        Scanner sc = new Scanner(System.in);
+        String[] strs = sc.nextLine().split(" ");
+        HashMap<String, List<String>> map = new HashMap<>();
+        ArrayList<String> res = new ArrayList<>();
+        for (String str : strs) {
+            String[] s = str.split("->");
+            String left = s[0];
+            String right = s[1];
+            if(!map.containsKey(left)){
+                map.put(left,new ArrayList<>());
             }
-            int a = n / (int) Math.pow(10, i - 1);
-            int b = a / 10;
-            n -= b * (int) Math.pow(10, i - 1);
+            map.get(left).add(right);
+            if(!map.containsKey(right)){
+                map.put(right,new ArrayList<>());
+            }
         }
-        System.out.println(n);
-        long endTime = System.currentTimeMillis();
-        System.out.println("程序执行时间：" + (endTime - startTime) + "ms");
+
+        while (!map.isEmpty()){
+            executeTask(map,res);
+            for (String key : map.keySet()) {
+                List<String> values = map.get(key);
+                Iterator<String> iterator = values.iterator();
+                while (iterator.hasNext()){
+                    if(!map.containsKey(iterator.next())){
+                        iterator.remove();
+                    }
+                }
+            }
+        }
+        for (String re : res) {
+            System.out.println(re);
+        }
+    }
+    private static void executeTask(HashMap<String, List<String>> map, ArrayList<String> res) {
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            if(entry.getValue().isEmpty()){
+                String key = entry.getKey();
+                res.add(key);
+                map.remove(key);
+            }
+        }
     }
 }
 
