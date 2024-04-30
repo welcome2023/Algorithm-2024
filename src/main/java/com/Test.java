@@ -1,6 +1,6 @@
 package com;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * @createDate 2023-12-25 22:52
@@ -9,47 +9,25 @@ import java.util.*;
 public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] strs = sc.nextLine().split(" ");
-        HashMap<String, List<String>> map = new HashMap<>();
-        ArrayList<String> res = new ArrayList<>();
-        for (String str : strs) {
-            String[] s = str.split("->");
-            String left = s[0];
-            String right = s[1];
-            if(!map.containsKey(left)){
-                map.put(left,new ArrayList<>());
-            }
-            map.get(left).add(right);
-            if(!map.containsKey(right)){
-                map.put(right,new ArrayList<>());
-            }
+        int n = sc.nextInt();
+        sc.close();
+        int m=n+1;
+        while (getRes(m)!=getRes(n)){
+            m++;
         }
+        System.out.println(m);
+    }
 
-        while (!map.isEmpty()){
-            executeTask(map,res);
-            for (String key : map.keySet()) {
-                List<String> values = map.get(key);
-                Iterator<String> iterator = values.iterator();
-                while (iterator.hasNext()){
-                    if(!map.containsKey(iterator.next())){
-                        iterator.remove();
-                    }
-                }
-            }
+    public static int getRes(int n){
+        int count=0;
+        while (n>0){
+            count+=n&1;
+            n=n>>1;
         }
-        for (String re : res) {
-            System.out.println(re);
-        }
+        return count;
     }
-    private static void executeTask(HashMap<String, List<String>> map, ArrayList<String> res) {
-        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            if(entry.getValue().isEmpty()){
-                String key = entry.getKey();
-                res.add(key);
-                map.remove(key);
-            }
-        }
-    }
+
+
 }
 
 
