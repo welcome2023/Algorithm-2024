@@ -37,7 +37,7 @@ public class Class05_Java_MountainPeek {
                 }
             }
 
-            System.out.println(res);
+            System.out.println(res+" ");
         }
     }
 
