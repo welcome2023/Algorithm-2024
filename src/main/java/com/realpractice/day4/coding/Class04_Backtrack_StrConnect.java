@@ -1,7 +1,7 @@
 package com.realpractice.day4.coding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -10,45 +10,51 @@ import java.util.Scanner;
  * @usage
  */
 public class Class04_Backtrack_StrConnect {
-    static int num;
-    static int sum;
+    public static List<String> list = new ArrayList<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        try {
-            num=Integer.valueOf(s.substring(s.length()-1));
-            s=s.substring(0,s.length()-2);
-        } catch (NumberFormatException e) {
-            System.out.println(0);
-            return;
+        String[] n = scanner.nextLine().split(" ");
+        String s = n[0];
+        boolean isError = false;
+        if (n.length != 2 || !n[1].matches("\\d+")) {
+            isError = true;
         }
-        char[] chars = s.toCharArray();
-        Arrays.sort(chars);
-        ArrayList<Integer> integers = new ArrayList<>();
-        int[] bo = new int[chars.length];
-        sum = 0;
-        dfs123(chars, integers, bo);
-        System.out.println(sum);
-    }
-    private static void dfs123(char[] chars, ArrayList<Integer> integers, int[] bo) {
-        if (integers.size() == num) {
-            sum++;
-            return;
+        if (s.length() <= 0 || s.length() > 30) {
+            isError = true;
         }
-        for (int i = 0; i < chars.length; i++) {
-            if (bo[i] == 0) {
-                if (integers.size() == 0 || chars[i] != chars[integers.get(integers.size() - 1)]) {
-                    if (i > 0 && chars[i] == chars[i - 1] && bo[i - 1] == 0) {
-                        continue;
-                    }
-                    bo[i] = 1;
-                    integers.add(i);
-                    dfs123(chars, integers, bo);
-                    bo[i] = 0;
-                    integers.remove(integers.size() - 1);
-                }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isLowerCase(s.charAt(i))) {
+                isError = false;
+                break;
             }
         }
-        return;
+        if (isError) {
+            System.out.println(0);
+        } else {
+            char[] chars = s.toCharArray();
+            handle(Integer.parseInt(n[1]), new StringBuilder(), chars, new ArrayList<>());
+            System.out.println(list.size());
+        }
     }
+    public static void handle(int count, StringBuilder str, char[] chars, List<Integer> indexList) {
+        if (count == 0) {
+            String newStr = new String(str);
+            if (!list.contains(newStr)) {
+                list.add(newStr);
+                System.out.println(newStr);
+            }
+        } else {
+            for (int i = 0; i < chars.length; i++) {
+                int len = str.length();
+                if ((len > 0 && str.charAt(len - 1) == chars[i]) || indexList.contains(i)) {
+                    continue;
+                }
+                indexList.add(i);
+                handle(count - 1, str.append(chars[i]), chars, indexList);
+                indexList.remove(indexList.size() - 1);
+                str.deleteCharAt(str.length() - 1);
+            }
+        }
+    }
+
 }

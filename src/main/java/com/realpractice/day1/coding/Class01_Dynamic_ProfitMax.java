@@ -10,27 +10,29 @@ import java.util.Scanner;
 public class Class01_Dynamic_ProfitMax {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int len= scanner.nextInt(),aswlen=0,aswmark=-1,i;
-        for(i=1;i<len;i++){
-            int aswnow=1,l1=len/i,s1=len%i;
-            for(int j=0;j<i;j++){
-                if(j+s1>=i){
-                    aswnow=aswnow*(l1+1);
-                }else {
-                    aswnow=aswnow*l1;
+        int len = scanner.nextInt();
+        int aswlen = 0;
+        int num = -1;
+        for (int i = 1; i < len; i++) {
+            int curAsw = 1, subLen = len / i, remainNum = len % i;
+            for (int j = 0; j < i; j++) {
+                if (j + remainNum >= i) {
+                    curAsw = curAsw * (subLen + 1);
+                } else {
+                    curAsw = curAsw * subLen;
                 }
             }
-            if(aswnow>aswlen){
-                aswlen=aswnow;
-                aswmark=i;
+            if (curAsw > aswlen) {
+                aswlen = curAsw;
+                num = i;
             }
         }
-        int l1=len/aswmark,s1=len%aswmark;
-        for(int j=0;j<aswmark;j++){
-            if(j+s1>=aswmark){
-                System.out.print((l1+1)+" ");
-            }else {
-                System.out.print(l1+" ");
+        int resLen = len / num, s1 = len % num;
+        for (int j = 0; j < num; j++) {
+            if (j + s1 >= num) {
+                System.out.print((resLen + 1) + " ");
+            } else {
+                System.out.print(resLen + " ");
             }
         }
     }

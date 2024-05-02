@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @date 2024-04-30 15:43
  * @usage
  */
-public class Class04_Java_BaseConversion {
+public class Class04_Java_BinaryConversion {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = 0;
