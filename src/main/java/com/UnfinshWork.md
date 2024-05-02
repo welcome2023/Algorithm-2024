@@ -12,4 +12,4 @@ System.out.println("本次执行程序所消耗的时间："+(end-start)+"ms");
 int []arr = Arrays.stream(sc.nextLine().split(",")).mapToInt(Integer::parseInt).toArray();
 
 不用再刷的题：
-1102 1103 1104 1105
+1102 1103 1104 1105 
