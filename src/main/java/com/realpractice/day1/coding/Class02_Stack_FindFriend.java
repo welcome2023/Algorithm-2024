@@ -7,7 +7,8 @@ import java.util.Stack;
 /**
  * @author cmsxyz@163.com
  * @date 2024-04-14 21:30
- * @usage C卷24题
+ * @usage 8
+ * 123 124 125 121 119 122 126 123
  */
 public class Class02_Stack_FindFriend {
     public static void main(String[] args) {
@@ -25,7 +26,7 @@ public class Class02_Stack_FindFriend {
             stack.add(i);
         }
         for (int re : res) {
-            System.out.println(re);
+            System.out.print(re + " ");
         }
     }
 }

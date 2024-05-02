@@ -1,7 +1,7 @@
 总结：
     1.输入输入hashNext和sc.nextInt使用的区别
 待办:
-    0702 0604 0101 0404 0504 0804 1004
+    0101
 
 模版代码：
 -- 1.执行时间
@@ -12,4 +12,5 @@ System.out.println("本次执行程序所消耗的时间："+(end-start)+"ms");
 int []arr = Arrays.stream(sc.nextLine().split(",")).mapToInt(Integer::parseInt).toArray();
 
 不用再刷的题：
-1102 1103 1104 1105 
+1101 1102 1103 1104 1105 
+0102 0103 0104 0105 

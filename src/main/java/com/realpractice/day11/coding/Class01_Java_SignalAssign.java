@@ -22,17 +22,12 @@ public class Class01_Java_SignalAssign {
             dmap.put((int) (Math.pow(2, index)), arr[index]);
             index += 1;
         }
-
-
-
         for (Integer k : dmap.keySet()) {
             if (k >= d) {
                 count += dmap.getOrDefault(k, 0);
                 dmap.put(k, 0);
             }
         }
-
-
         int cap = 0;
         for (int k : dmap.keySet()) {
             cap += k * dmap.getOrDefault(k, 0);

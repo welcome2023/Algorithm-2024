@@ -5,34 +5,35 @@ import java.util.Scanner;
 /**
  * @author cmsxyz@163.com
  * @date 2024-04-14 20:52
- * @usage
+ * @usage int resAsw = 0;
+ *
  */
 public class Class01_Dynamic_ProfitMax {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int len = scanner.nextInt();
-        int aswlen = 0;
-        int num = -1;
-        for (int i = 1; i < len; i++) {
-            int curAsw = 1, subLen = len / i, remainNum = len % i;
+        Scanner sc = new Scanner(System.in);
+        int treeHei = sc.nextInt();
+        int count = 0; //用于存储当前最优树的段数
+        int maxMoney = 0; //用于存储当前最优解的利润(最大利润)
+        for (int i = 1; i < treeHei; i++) {
+            int curMoney = 1, subLen = treeHei / i, remainLen = treeHei % i;
             for (int j = 0; j < i; j++) {
-                if (j + remainNum >= i) {
-                    curAsw = curAsw * (subLen + 1);
+                if (j + remainLen >= i) {
+                    curMoney *= (subLen + 1);
                 } else {
-                    curAsw = curAsw * subLen;
+                    curMoney *= subLen;
                 }
             }
-            if (curAsw > aswlen) {
-                aswlen = curAsw;
-                num = i;
+            if (curMoney > maxMoney) {
+                maxMoney = curMoney;
+                count = i;
             }
         }
-        int resLen = len / num, s1 = len % num;
-        for (int j = 0; j < num; j++) {
-            if (j + s1 >= num) {
-                System.out.print((resLen + 1) + " ");
+        int subLen = treeHei / count, remainLen = treeHei % count;
+        for (int i = 0; i < count; i++) {
+            if (i + remainLen >= count) {
+                System.out.print(subLen + 1 + " ");
             } else {
-                System.out.print(resLen + " ");
+                System.out.print(subLen + " ");
             }
         }
     }
