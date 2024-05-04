@@ -29,6 +29,7 @@ public class Class03_Java_ModeAndMiddle {
         heap.addAll(map.entrySet());
         Map.Entry<Integer, Integer> current = heap.peek();
         int a=current.getValue();
+        // 111 222 333和1 2 3 的中位数一致
         while (!heap.isEmpty()) {
             Map.Entry<Integer, Integer> nowHeap = heap.poll();
             if (nowHeap.getValue().equals(a)) {

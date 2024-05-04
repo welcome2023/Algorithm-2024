@@ -7,7 +7,7 @@ import java.util.*;
  * @date 2024-04-18 23:03
  * @usage
  */
-public class Class05_Java_HighSort {
+public class Class05_Java_HeightWeightSort {
     public static void main(String[] args) {
         ArrayList<List<Integer>> lists = new ArrayList<>();
         Scanner sc = new Scanner(System.in);

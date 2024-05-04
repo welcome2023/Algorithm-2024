@@ -12,7 +12,7 @@ import java.util.TreeMap;
  * 返回变换后能得到的最小字符串（按照字典序
  * 进行比较）。
  */
-public class Class07_Java_ChangeOneChar {
+public class Class03_Heap_ChangeOneChar {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
@@ -42,5 +42,4 @@ public class Class07_Java_ChangeOneChar {
         arr[i] = arr[j];
         arr[j] = tmp;
     }
-
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 分别取出一个元素可构成一对元素，现在需要取出 k 对元素，并对取出的所有元素求和，
  * 计算和的最小值
  */
-public class Class07_Java_GetMinSumK {
+public class Class04_Java_GetMinSumK {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {

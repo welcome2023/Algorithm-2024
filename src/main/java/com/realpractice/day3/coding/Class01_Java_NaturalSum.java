@@ -11,19 +11,22 @@ public class Class01_Java_NaturalSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        System.out.println(n + "=" + n);
-        for (int i = 1; i < n; i++) {
-            int sum = 0;
+        int count = 0;
+        int sum = 0;
+        for (int i = n; i >= 1; i--) {
             StringBuilder sb = new StringBuilder();
-            for (int j = i; j < n; j++) {
-                sum += j;
+            for (int j = i; j <= n; j++) {
                 sb.append(j).append("+");
+                sum += j;
                 if (sum == n) {
-                    System.out.println(sum + "=" + sb.substring(0, sb.length() - 1));
-                    break;
+                    count++;
+                    String str = sb.substring(0, sb.length() - 1);
+                    System.out.println(n + "=" + str);
                 }
             }
+            sum = 0;
         }
+        System.out.println("Result:" + count);
     }
 
 }
