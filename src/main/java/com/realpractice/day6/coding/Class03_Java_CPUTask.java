@@ -21,10 +21,6 @@ public class Class03_Java_CPUTask {
         for (int i = 0; i < totalTasks; i++) {
             taskDurations[i] = scanner.nextInt();
         }
-
-
-
-
         // 初始化时间计数器和溢出时间
         int totalTime = 0;
         int overflowTime = 0;
@@ -41,11 +37,6 @@ public class Class03_Java_CPUTask {
             // 每处理一个任务（或其一部分），时间计数器加一
             totalTime++;
         }
-
-
-
-
-
         // 处理剩余的溢出时间
         while (overflowTime > 0) {
             // 减少溢出时间，并增加总时间

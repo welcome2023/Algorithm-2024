@@ -27,9 +27,10 @@ public class Class01_Java_ColdHotData {
             }
         }
         System.out.println(count);
-        for (Integer integer : set) {
-            System.out.println(integer);
+        if(set.size()!=0){
+            for (Integer integer : set) {
+                System.out.println(integer);
+            }
         }
-
     }
 }

@@ -1,7 +1,7 @@
 package com.realpractice.day6.coding;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,42 +12,39 @@ import java.util.Scanner;
 public class Class02_Java_StringSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        int left = 0;
-        int right = str.length() - 1;
-        while (!Character.isDigit(str.charAt(left))) {
-            left++;
-        }
-        while (!Character.isDigit(str.charAt(right))) {
-            right--;
-        }
-        LinkedHashMap<Integer, Character> map = new LinkedHashMap<>();
-        String sub = str.substring(left, right + 1);
-        for (int i = 0; i < sub.length(); i++) {
-            map.put(i, sub.charAt(i));
-        }
-        int flag = -1;
-        for (Map.Entry<Integer, Character> entry : map.entrySet()) {
-            if (entry.getValue() == '-') {
-                flag = entry.getKey();
+        String s = sc.nextLine();
+        int len = s.length();
+        List<Integer> list = new ArrayList<>();
+        String temp = "";
+        boolean isFuhao = false;
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                if (isFuhao) {
+                    temp += c;    //有负号的情况下数字越大越好，直接拼接
+                } else {
+                    list.add(Integer.valueOf(String.valueOf(c)));   //没有负号直接加入集合
+                }
+            } else if (c == '-') {
+                if (temp != "" && temp != "-") {    //temp中有值且不是一个“-”单字符串的情况下
+                    list.add(Integer.valueOf(temp));
+                }
+                isFuhao = true; //说明下一个字符串有了负号
+                temp = "-";
+            } else { //  字母和“+”的情况下进入
+                if (temp != "" && temp != "-") {
+                    list.add(Integer.valueOf(temp));
+                }
+                temp = "";  //无论之前是什么，都需要置空
+                isFuhao = false;
             }
         }
         int res = 0;
-        int res1=0;
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Integer, Character> entry : map.entrySet()) {
-            if (flag == -1) {
-                res+=Integer.parseInt(String.valueOf(entry.getValue()));
-            } else {
-                if (entry.getKey() < flag) {
-                    res1 += Integer.parseInt(String.valueOf(entry.getValue()));
-                }
-                if (entry.getKey() > flag) {
-                    sb.append(entry.getValue());
-                }
-            }
+        for (int i : list
+        ) {
+            res += i;
         }
-        System.out.println(flag==-1?res:res1-Integer.parseInt(sb.toString()));
+        System.out.println(res);
     }
 }
 

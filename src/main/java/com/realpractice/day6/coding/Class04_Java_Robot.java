@@ -9,34 +9,31 @@ import java.util.*;
  */
 public class Class04_Java_Robot {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        while (in.hasNext()) { // 注意 while 处理多个 case
-            String s = in.nextLine();
-            String[] s1 = s.split(" ");
-            int[] bricks = new int[s1.length];
-            for (int i = 0; i < s1.length; i++) {
-                bricks[i] = Integer.parseInt(s1[i]);
+        Scanner sc = new Scanner(System.in);
+        String[] strings = sc.nextLine().split(" ");
+        if (strings.length > 8) {
+            System.out.println(-1);
+        } else {
+            int[] ints = Arrays.stream(strings).mapToInt(Integer::parseInt).toArray();
+            //最小数是总数除以8，因为最长8小时要搬完。每小时最少要搬min
+            int min = Arrays.stream(ints).sum() / 8;
+            //最大数是仓库中最大值，因为每个小时只能在一个仓库中搬
+            int max = Arrays.stream(ints).max().orElse(0);
+            while (min < max) {
+                //二分法，取中间值
+                int half = (min + max) / 2;
+                int time = 0;
+                for (int i : ints) {
+                    //能整除的直接取商，有余的需要加1
+                    time += i / half + (i % half == 0 ? 0 : 1);
+                }
+                if (time > 8) {
+                    min = half + 1;
+                } else {
+                    max = half;
+                }
             }
-            Arrays.sort(bricks);
-            if (bricks.length > 8) {
-                System.out.println(-1);
-                continue;
-            } else if (bricks.length == 8) {
-                System.out.println(bricks[bricks.length - 1]);
-                continue;
-            }
-            int times = 8 - bricks.length;
-            List<Integer> list = new ArrayList<>();
-            for (int i = 0; i < times && i < bricks.length; i++) {
-                int num = bricks[bricks.length - 1 - i] / 2;
-                list.add(num);
-                list.add(bricks[bricks.length - 1 - i] - num);
-            }
-            for (int i = 0; i < bricks.length - times; i++) {
-                list.add(bricks[i]);
-            }
-            Integer max = Collections.max(list);
-            System.out.println(max);
+            System.out.println(min);
         }
     }
 }

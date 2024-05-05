@@ -11,19 +11,22 @@ import java.util.Scanner;
 public class Class05_Java_CPUChange {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] arr1 = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] arr2 = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        String[] st = sc.nextLine().split(" ");
+        int arr1Len=Integer.parseInt(st[0]);
+        int arr2Len=Integer.parseInt(st[1]);
+        int []arr1 = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        int []arr2 = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         Arrays.sort(arr1);
-        boolean flag=false;
-        for (int j : arr1) {
-            for (int k : arr2) {
-                if (j - k == Arrays.stream(arr1).sum() - j - Arrays.stream(arr2).sum() + k) {
-                    System.out.println(j + "----" + k);
-                    flag = true;
-                    break;
+        Arrays.sort(arr2);
+        int sum1 = Arrays.stream(arr1).sum();
+        int sum2 = Arrays.stream(arr2).sum();
+        for (int i = 0; i < arr1Len; i++) {
+            for (int j = 0; j < arr2Len; j++) {
+                if(arr1[i]-arr2[j]==sum1-arr1[i]-(sum2-arr2[j])){
+                    System.out.println(arr1[i]+" "+arr2[j]);
+                    return;
                 }
             }
-            if (flag) break;
         }
     }
 }
