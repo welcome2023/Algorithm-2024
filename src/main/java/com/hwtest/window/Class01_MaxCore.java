@@ -21,8 +21,8 @@ public class Class01_MaxCore {
 
         int minSize=Integer.MAX_VALUE;
         for (int i = windowSize; i < arr.length; i++) {
-            sum+=arr[i]-arr[i-windowSize];
             minSize=Math.min(sum,minSize);
+            sum+=arr[i]-arr[i-windowSize];
         }
         return Arrays.stream(arr).sum()-minSize;
     }

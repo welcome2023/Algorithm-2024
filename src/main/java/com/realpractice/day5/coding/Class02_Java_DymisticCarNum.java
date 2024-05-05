@@ -24,11 +24,23 @@ public class Class02_Java_DymisticCarNum {
                 }
                 continue;
             }
+            // i==arr.length-1 最后一位是1的时候 res+1,最后一位是0,到不到这一步判断
             if(count==3||i==arr.length-1){
                 res++;
                 count=0;
             }
         }
         System.out.println(res);
+    }
+
+
+    public static void getRes() {
+        Scanner sc = new Scanner(System.in);
+        String[] arr = sc.nextLine().replace(",","").split("0+");
+        int count=0;
+        for (String s : arr) {
+            count+=s.length()/4+1;
+        }
+        System.out.println(count);
     }
 }

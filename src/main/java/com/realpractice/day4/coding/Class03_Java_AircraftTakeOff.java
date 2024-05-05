@@ -12,15 +12,21 @@ import java.util.Scanner;
 public class Class03_Java_AircraftTakeOff {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] arr = sc.nextLine().split(",");
-        Arrays.sort(arr, new Comparator<String>() {
+        String[] strings = sc.nextLine().split(",");
+        Arrays.sort(strings, new Comparator<String>() {
             @Override
-            public int compare(String o1, String o2) {
-                return o1.charAt(0)==o2.charAt(0)?o1.charAt(1)-o2.charAt(1):o1.charAt(0)-o2.charAt(0);
+            public int compare(String strA, String strB) {
+                String a = strA.substring(0, 2);
+                String b = strB.substring(0, 2);
+                if (a.equals(b)) {
+                    String numA = strA.substring(2);
+                    String numB = strB.substring(2);
+                    return numA.compareTo(numB);
+                }
+                return a.compareTo(b);
             }
         });
-        for (String s : arr) {
-            System.out.print(s+" ");
-        }
+        String st = Arrays.toString(strings);
+        System.out.print(st.substring(1,st.length()-2));
     }
 }

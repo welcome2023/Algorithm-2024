@@ -10,27 +10,31 @@ import java.util.Scanner;
 public class Class05_Java_Password {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+        char[] cha = sc.nextLine().toCharArray();
         StringBuilder sb = new StringBuilder();
-        boolean isDigit = false, isLowerCase = false, isUpperCase = false, isLetter = false;
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            if (c == '<' && sb.length() > 0) {
+        for (char value : cha) {
+            if (sb.length() > 0 && value == '<') {
                 sb.deleteCharAt(sb.length() - 1);
-            } else {
-                sb.append(c);
-                if (Character.isDigit(c)) {
-                    isDigit = true;
-                } else if (Character.isLowerCase(c)) {
-                    isLowerCase = true;
-                } else if (Character.isUpperCase(c)) {
-                    isUpperCase = true;
-                } else {
-                    isLetter = true;
-                }
+            } else if (value != '<') {
+                sb.append(value);
             }
         }
-        boolean isTrue = sb.length() >= 8 && isDigit && isLetter && isLowerCase && isUpperCase;
-        System.out.println(sb + "," + isTrue);
+        boolean isDig = false, isUpper = false, isLower = false, isLetter = false;
+        for (char c : sb.toString().toCharArray()) {
+            if (Character.isDigit(c)) {
+                isDig = true;
+            }
+            if (Character.isUpperCase(c)) {
+                isUpper = true;
+            }
+            if (Character.isLowerCase(c)) {
+                isLower = true;
+            }
+            if (Character.isLetter(c)) {
+                isLetter = true;
+            }
+        }
+
+        System.out.println(isDig && isUpper && isLetter && isLower ? sb + "," + true : sb + "," + false);
     }
 }

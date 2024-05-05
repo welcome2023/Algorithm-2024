@@ -30,7 +30,5 @@ public class Class03_Java_JumpNumber {
             res+=i;
         }
         System.out.println(res);
-
-
     }
 }

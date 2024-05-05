@@ -1,7 +1,6 @@
 package com.realpractice.day4.coding;
 
 import java.util.Scanner;
-import java.util.TreeMap;
 
 /**
  * @author cmsxyz@163.com
@@ -11,22 +10,17 @@ import java.util.TreeMap;
 public class Class02_Java_BalanceSubstr {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        getRes(str);
-    }
-    public static void getRes(String str) {
-        int count = 0;
-        char[] cha = str.toCharArray();
-        TreeMap<Character, Integer> map = new TreeMap<>();
+        char[] cha = sc.nextLine().toCharArray();
+        int res=0;
+        int x=0;
+        int y=0;
         for (char c : cha) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
-            if (map.get(map.firstKey()).equals(map.get(map.lastKey()))&&map.size()==2) {
-                count++;
-                map.remove(map.lastKey());
-                map.remove(map.firstKey());
+            if (c == 'X') x++;
+            if (c == 'Y') y++;
+            if (x == y) {
+                res++;
             }
         }
-        System.out.println(count);
+        System.out.println(res);
     }
-
 }

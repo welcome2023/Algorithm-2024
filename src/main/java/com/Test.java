@@ -9,26 +9,60 @@ import java.util.*;
 public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        ArrayList<int[]> list = new ArrayList<>();
-        sc.nextLine();
-        int[] hei = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] wei = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        for (int i = 0; i < n; i++) {
-            int[] ints = new int[3];
-            ints[0] = i + 1;
-            ints[1] = hei[i];
-            ints[2] = wei[i];
-            list.add(ints);
-        }
-        list.sort(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] == o2[1] ? o1[2] - o2[2] : o1[1] - o2[1];
+        Stack<Integer> stackN = new Stack<>();
+        Stack<Character> stackF = new Stack<>();
+        char[] cha = sc.nextLine().toCharArray();
+        String st = "";
+        for (int i = 0; i < cha.length; i++) {
+            if (Character.isDigit(cha[i])) {
+                st += cha[i];
+                if (i == cha.length - 1) {
+                    int n = Integer.parseInt(st);
+                    Character f = stackF.peek();
+                    if (f == '#') {
+                        stackN.add(n);
+                    } else {
+                        Integer m = stackN.pop();
+                        stackF.pop(); // 漏了
+                        stackN.add(getDol(m, n));
+                    }
+                }
+            } else {
+                int n = Integer.parseInt(st);
+                if (stackF.isEmpty()) {
+                    stackN.add(n);
+                    st = "";
+                    stackF.add(cha[i]);
+                } else {
+                    Character m = stackF.peek();
+                    st = "";
+                    if (m == '#') {
+                        stackN.add(n);
+                    } else {
+                        Integer k = stackN.pop();
+                        stackF.pop();
+                        stackN.add(getDol(k, n));
+                    }
+                    stackF.add(cha[i]);
+                }
+
             }
-        });
-        for (int[] ints : list) {
-            System.out.print(ints[0] + " ");
         }
+        while (stackN.size() > 1) {
+            stackN.add(getJin(stackN.pop(), stackN.pop()));
+        }
+        System.out.println(stackN.peek());
+
+
+
+    }
+
+
+    public static int getJin(int i, int j) {
+        return 2 * i + 3 * j + 4;
+    }
+
+    public static int getDol(int i, int j) {
+        return 3 * i + j + 2;
     }
 }

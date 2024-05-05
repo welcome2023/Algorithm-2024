@@ -11,18 +11,20 @@ import java.util.Scanner;
 public class Class01_Window_EatBanana {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int len = sc.nextInt();
-        sc.nextLine();
-        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         int n = sc.nextInt();
-        int window=len-n;
-        int sum=0;
+        sc.nextLine();
+        int[] array = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        int k = sc.nextInt();
+        int window=n-k;
+        int res=0;
         for (int i = 0; i < window; i++) {
-            sum+=arr[i];
+            res+=array[i];
         }
-        for (int i = 1; i < n-1; i++) {
-            sum=Math.min(sum,sum-arr[i-1]+arr[i+1]);
+        int minSize=Integer.MAX_VALUE;
+        for (int i = window; i < n; i++) {
+            minSize=Math.min(minSize,res);
+            res+=array[i]-array[i-window];
         }
-        System.out.println((Arrays.stream(arr).sum() - sum));
+        System.out.println(Arrays.stream(array).sum()-minSize);
     }
 }

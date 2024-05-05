@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class Class04_Backtrack_StrConnect {
     public static List<String> list = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[] n = scanner.nextLine().split(" ");
@@ -36,6 +37,7 @@ public class Class04_Backtrack_StrConnect {
             System.out.println(list.size());
         }
     }
+
     public static void handle(int count, StringBuilder str, char[] chars, List<Integer> indexList) {
         if (count == 0) {
             String newStr = new String(str);
@@ -56,5 +58,4 @@ public class Class04_Backtrack_StrConnect {
             }
         }
     }
-
 }
