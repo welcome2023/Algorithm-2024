@@ -25,16 +25,14 @@ public class Class01_Java_Basketball {
                 if (list.peekFirst() == arr2[left] && left <= i) {
                     list.pollFirst();
                     sb.append("L");
-                    left++;
                 }
                 if (!list.isEmpty() && list.peekLast() == arr2[left] && left <= i) {
                     list.pollLast();
                     sb.append("R");
-                    left++;
                 }
+                left++;
             }
         }
         System.out.println(list.isEmpty() ? sb.toString() : null);
-
     }
 }

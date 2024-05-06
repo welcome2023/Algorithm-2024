@@ -20,7 +20,7 @@ public class Class03_Java_TeamProgrammer {
             int a = levels[i];
             for (int j = i + 1; j < n - 1; j++) {
                 int b = levels[j];
-                larger = a >= b;
+                larger = a > b;
                 for (int k = j + 1; k < n; k++) {
                     int c = levels[k];
                     if (larger) {
