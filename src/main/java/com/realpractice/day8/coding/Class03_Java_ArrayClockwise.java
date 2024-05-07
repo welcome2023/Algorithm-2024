@@ -1,5 +1,6 @@
 package com.realpractice.day8.coding;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -10,80 +11,70 @@ import java.util.Scanner;
 public class Class03_Java_ArrayClockwise {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] str = sc.nextLine().split(" ");
-        int n = Integer.parseInt(str[0]);
-        int row = Integer.parseInt(str[1]);
-        int col = n / row + 1;
-
-        int left = 0;
-        int right = col;
-        int top = 0;
-        int down = row;
-        int count = 1;
-        String[][] c = new String[row][col];
-        while (true) {
-            for (int i = left; i < right; i++) {
-                // top
-                if (n > 0) {
-                    c[top][i] = String.valueOf(count++);
-                } else {
-                    c[top][i] = "*";
+        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        int n = arr[0];
+        int row = arr[1];
+        if (n <= row) {
+            for (int i = 0; i < row; i++) {
+                System.out.println(i < arr.length ? arr[i] : "*");
+            }
+        } else {
+            int col = n / row + 1;
+            String[][] ints = new String[ row][col];
+            int left = 0;
+            int right = col - 1;
+            int top = 0;
+            int down = row - 1;
+            int count = 1;
+            while (true) {
+                for (int i = left; i <= right; i++) {
+                    if (n > 0) {
+                        ints[top][i] = String.valueOf(count++);
+                    } else {
+                        ints[top][i] = "*";
+                    }
+                    n--;
                 }
-                n--;
-            }
-            top++;
-            if (top >= down) {
-                break;
-            }
+                top++;
+                if (top > down) break;
+                for (int i = top; i <= down; i++) {
 
-            // right
-            for (int i = top; i < down; i++) {
-                if (n > 0) {
-                    c[i][right-1] = String.valueOf(count++);
-                } else {
-                    c[i][right-1] = "*";
+                    if (n > 0) {
+                        ints[i][right] = String.valueOf(count++);
+                    } else {
+                        ints[i][right] = "*";
+                    }
+                    n--;
                 }
-                n--;
-            }
-            right--;
-            if (left >= right) {
-                break;
-            }
-            // down
-            for (int i = right; i > left; i--) {
-                if (n > 0) {
-                    c[down-1][i-1] = String.valueOf(count++);
-                } else {
-                    c[down-1][i-1] = "*";
+                right--;
+                if (left > right) break;
+                for (int i = right; i >= left; i--) {
+                    if (n > 0) {
+                        ints[down][i] = String.valueOf(count++);
+                    } else {
+                        ints[down][i] = "*";
+                    }
+                    n--;
                 }
-                n--;
-            }
-            down--;
-            if (top >= down) {
-                break;
-            }
-
-            // left
-            for (int i = down; i > top; i--) {
-                if (n > 0) {
-                    c[i-1][left] = String.valueOf(count++);
-                } else {
-                    c[i-1][left] = "*";
+                down--;
+                if (top > down) break;
+                for (int i = down; i >= top; i--) {
+                    if (n > 0) {
+                        ints[i][left] = String.valueOf(count++);
+                    } else {
+                        ints[i][left] = "*";
+                    }
+                    n--;
                 }
-                n--;
+                left++;
+                if (left > right) break;
             }
-            left++;
-
-            if (left >= right) {
-                break;
+            for (String[] anInt : ints) {
+                for (String s : anInt) {
+                    System.out.print(s+"\t");
+                }
+                System.out.println();
             }
-        }
-
-        for (String[] strings : c) {
-            for (String s : strings) {
-                System.out.print(s+"\t");
-            }
-            System.out.println();
         }
 
     }
