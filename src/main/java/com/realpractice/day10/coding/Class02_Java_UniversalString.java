@@ -21,10 +21,9 @@ public class Class02_Java_UniversalString {
         String chars = sc.nextLine();
         int res = 0;
         for (String str : list) {
-            //StringBuilder方便删除字符
             StringBuilder newChars = new StringBuilder(chars);
-            //用来判断是否匹配完成
             boolean flag = true;
+
             for (char c : str.toCharArray()) {
                 if (newChars.indexOf(String.valueOf(c)) != -1) {
                     //存在这个字符则直接删除
