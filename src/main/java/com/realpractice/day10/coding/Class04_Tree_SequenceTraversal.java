@@ -8,57 +8,67 @@ import java.util.Scanner;
  * @author cmsxyz@163.com
  * @date 2024-04-29 19:50
  * @usage
+ * 95723
+ * 93527
  */
 public class Class04_Tree_SequenceTraversal {
-    private String postorder;
-    private String inorder;
-    private class TreeNode{
-        public char val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(char val){
-            this.val = val;
-        }
-    }
+    static String posString;
+    static String midString;
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String postorderStr = in.next();
-        String inorderStr = in.next();
-        Class04_Tree_SequenceTraversal mainClass = new Class04_Tree_SequenceTraversal();
-        mainClass.postorder = postorderStr;
-        mainClass.inorder = inorderStr;
-        TreeNode root = mainClass.buildTree(0, postorderStr.length() - 1, 0, inorderStr.length() - 1);
-        System.out.println(mainClass.traversal(root));
+        Scanner sc = new Scanner(System.in);
+        posString=sc.nextLine();
+        midString=sc.nextLine();
+        Tree99 root = buildTree(0, posString.length() - 1, 0, midString.length() - 1);
+        System.out.println(travel(root));
     }
-    private TreeNode buildTree(int postLeft, int postRight, int inLeft, int inRight){
-        TreeNode root = new TreeNode(postorder.charAt(postRight));
-        int inorderRootIndex = 0;
-        for(inorderRootIndex = inLeft; inorderRootIndex <= inRight; inorderRootIndex++){
-            if(inorder.charAt(inorderRootIndex) == postorder.charAt(postRight))
-                break;
+
+    public static String travel(Tree99 root){
+        StringBuilder sb = new StringBuilder();
+        Queue<Tree99> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Tree99 node = queue.poll();
+            sb.append(node.val);
+            if(node.left!=null){
+                queue.add(node.left);
+            }
+            if(node.right!=null){
+                queue.add(node.right);
+            }
         }
-        int leftNodeNum = inorderRootIndex - inLeft;
-        int rightNodeNum = inRight - inorderRootIndex;
-        if(leftNodeNum > 0)
-            root.left = buildTree(postLeft, postLeft + leftNodeNum - 1, inLeft,
-                    inorderRootIndex - 1);
-        if(rightNodeNum > 0)
-            root.right = buildTree(postLeft + leftNodeNum, postRight - 1, inorderRootIndex + 1,
-                    inRight);
+        return sb.toString();
+    }
+
+    public static Tree99 buildTree(int posLeft, int posRight, int midLeft, int midRight) {
+        Tree99 root = new Tree99(posString.charAt(posRight));
+        int midRoot = 0;
+        for (; midRoot < midString.length(); midRoot++) {
+            if (midString.charAt(midRoot) == posString.charAt(posRight)) {
+                break;
+            }
+        }
+
+        int leftCount = midRoot - midLeft;
+        int rightCount = midRight - midRoot;
+
+        if (leftCount > 0) {
+            root.left=buildTree(posLeft,posLeft+leftCount-1,midLeft,midRoot-1);
+        }
+        if (rightCount>0) {
+            root.right=buildTree(posLeft+leftCount,posRight-1,midRoot+1,midRight);
+        }
         return root;
     }
-    private String traversal(TreeNode root){
-        String ans = "";
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while(!queue.isEmpty()){
-            TreeNode node = queue.poll();
-            ans = ans + node.val;
-            if(node.left != null)
-                queue.offer(node.left);
-            if(node.right != null)
-                queue.offer(node.right);
-        }
-        return ans;
+
+}
+
+class Tree99 {
+    char val;
+    Tree99 left;
+    Tree99 right;
+
+    public Tree99(char val) {
+        this.val = val;
     }
 }

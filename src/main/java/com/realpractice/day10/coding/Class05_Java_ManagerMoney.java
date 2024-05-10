@@ -23,9 +23,9 @@ public class Class05_Java_ManagerMoney {
         for (int i = 0; i < num; i++) {
             int sum = 0;
             if (fengxian[i] <= danger && touzie[i] <= money) {
-                sum += touzie[i] * huibaolv[i];
+                sum = touzie[i] * huibaolv[i];
             } else if (fengxian[i] <= danger && touzie[i] > money) {
-                sum += money * huibaolv[i];
+                sum = money * huibaolv[i];
             }
             if (sum > max) {
                 max = sum;
@@ -33,6 +33,9 @@ public class Class05_Java_ManagerMoney {
                 res[i] = touzie[i];
             }
         }
+
+
+
         for (int i = 0; i < num; i++) {
             for (int j = i + 1; j < num; j++) {
                 int sum = 0;
@@ -68,6 +71,8 @@ public class Class05_Java_ManagerMoney {
                 }
             }
         }
+
+
         for (int i = 0; i < num; i++) {
             System.out.print(res[i] + " ");
         }

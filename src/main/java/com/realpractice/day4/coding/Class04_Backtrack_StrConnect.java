@@ -16,10 +16,7 @@ public class Class04_Backtrack_StrConnect {
         Scanner scanner = new Scanner(System.in);
         String[] n = scanner.nextLine().split(" ");
         String s = n[0];
-        boolean isError = false;
-        if (n.length != 2 || !n[1].matches("\\d+")) {
-            isError = true;
-        }
+        boolean isError = n.length != 2 || Integer.parseInt(n[1]) <= 0 || Integer.parseInt(n[1]) > 5;
         if (s.length() <= 0 || s.length() > 30) {
             isError = true;
         }
@@ -33,29 +30,28 @@ public class Class04_Backtrack_StrConnect {
             System.out.println(0);
         } else {
             char[] chars = s.toCharArray();
-            handle(Integer.parseInt(n[1]), new StringBuilder(), chars, new ArrayList<>());
+            dfs(list, new StringBuilder(),Integer.parseInt(n[1]), chars);
             System.out.println(list.size());
         }
     }
 
-    public static void handle(int count, StringBuilder str, char[] chars, List<Integer> indexList) {
+    private static void dfs( List<String> list, StringBuilder sb, int count, char[] cha) {
         if (count == 0) {
-            String newStr = new String(str);
-            if (!list.contains(newStr)) {
-                list.add(newStr);
-                System.out.println(newStr);
+            if (!list.contains(sb.toString())) {
+                list.add(sb.toString());
+                System.out.println(sb);
+                return;
             }
-        } else {
-            for (int i = 0; i < chars.length; i++) {
-                int len = str.length();
-                if ((len > 0 && str.charAt(len - 1) == chars[i]) || indexList.contains(i)) {
-                    continue;
-                }
-                indexList.add(i);
-                handle(count - 1, str.append(chars[i]), chars, indexList);
-                indexList.remove(indexList.size() - 1);
-                str.deleteCharAt(str.length() - 1);
+            return;
+        }
+        for (int i = 0; i < cha.length; i++) {
+            int len = sb.length();
+            if ((len > 0 && sb.charAt(len - 1) == cha[i])) {
+                continue;
             }
+            sb.append(cha[i]);
+            dfs(list, sb, count - 1, cha);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }
