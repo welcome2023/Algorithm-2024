@@ -1,7 +1,6 @@
 package com;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @createDate 2023-12-25 22:52
@@ -10,50 +9,71 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        // 1.初始化二维数组
-        Scanner sc = new Scanner(System.in);
 
-        int m =sc.nextInt();
-        int n =sc.nextInt();
-        int[][] arr = new int[m][m];
-        Arrays.stream(arr).forEach(row -> Arrays.fill(row, -1));
-        for (int i = 0; i < n; i++) {
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-            int z = sc.nextInt();
-            int p = sc.nextInt();
-            if (p == 0) {
-                arr[x - 1][y - 1] = z;
-                arr[y - 1][x - 1] = z;
-            } else {
-                arr[x - 1][y - 1] = 0;
-                arr[y - 1][x - 1] = 0;
-            }
+        Scanner sc = new Scanner(System.in);
+        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+
+        List<Tree2> list = new ArrayList<>();
+
+        for (int i : arr) {
+            Tree2 tree = new Tree2(i, 1);
+            list.add(tree);
         }
-        // 2.定义需要的变量
-        int index = -1;
-        int minSpend = Integer.MAX_VALUE;
-        int totalSpend = 0;
-        int[] res = new int[m];
-        res[0] = 1;
-        for (int i = 1; i < m; i++) {
-            for (int j = 0; j < m; j++) {
-                for (int k = 0; k < m; k++) {
-                    if (res[j] == 1 && res[k] == 0 && arr[j][k] != -1 && arr[j][k] < minSpend) {
-                        index = k;
-                        minSpend = arr[j][k];
-                    }
-                }
-            }
-            res[index] = 1;
-            totalSpend += minSpend;
-            minSpend = Integer.MAX_VALUE;
+
+        while (list.size() > 1) {
+            Collections.sort(list);
+            Tree2 first = list.remove(0);
+            Tree2 second = list.remove(0);
+            int maxHeight=Math.max(first.height,second.height);
+            Tree2 tree = new Tree2(first, second, first.value + second.value, maxHeight + 1);
+            list.add(tree);
         }
-        if (Arrays.stream(res).sum() == res.length) {
-            System.out.println(totalSpend);
-        } else {
-            System.out.println(-1);
+
+        StringBuilder sb = new StringBuilder();
+        dfs(sb,list.get(0));
+        System.out.print(sb);
+
+
+    }
+
+    private static void dfs(StringBuilder sb, Tree2 tree) {
+        if(tree==null){
+            return;
         }
+        dfs(sb,tree.left);
+        sb.append(tree.value).append(" ");
+        dfs(sb,tree.right);
+    }
+}
+
+// 按照要求定义二叉树
+
+class Tree2 implements Comparable<Tree2> {
+    int value;
+    Tree2 left;
+    Tree2 right;
+    int height;
+
+    public Tree2(int value) {
+        this.value = value;
+    }
+
+    public Tree2(int value, int hei) {
+        this.value = value;
+        this.height = hei;
+    }
+
+    public Tree2(Tree2 left,Tree2 right,int value,int height){
+        this.left=left;
+        this.right=right;
+        this.value=value;
+        this.height=height;
+    }
+
+
+    @Override
+    public int compareTo(Tree2 o) {
+        return o.value == this.value ? this.height - o.height : this.value - o.value;
     }
 }
 
