@@ -18,7 +18,7 @@ public class Class02_Backtrack_WebServerNum {
     // 列
     public static int m;
     // 联通的服务器数量
-    public static int count;
+    public static int count=0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

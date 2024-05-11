@@ -7,79 +7,54 @@ import java.util.Scanner;
  * @createDate 2023-12-25 22:52
  * getMax
  */
-// CBEFDA CBAEDF
 
 public class Test {
-    static int max = 0;
-
     public static void main(String[] args) {
-
+        // 1.初始化二维数组
         Scanner sc = new Scanner(System.in);
-        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int n = arr[0];
-        int money = arr[1];
-        int danger = arr[2];
-        int[] huibaolv = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] fengxian = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] touzie = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] res = new int[n];
 
+        int m =sc.nextInt();
+        int n =sc.nextInt();
+        int[][] arr = new int[m][m];
+        Arrays.stream(arr).forEach(row -> Arrays.fill(row, -1));
         for (int i = 0; i < n; i++) {
-            int sum = 0;
-            if (fengxian[i] <= danger && touzie[i] <= money) {
-                sum = touzie[i] * huibaolv[i];
-            }
-            if (sum > max) {
-                max = sum;
-                Arrays.fill(res, 0);
-                res[i] = touzie[i];
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            int z = sc.nextInt();
+            int p = sc.nextInt();
+            if (p == 0) {
+                arr[x - 1][y - 1] = z;
+                arr[y - 1][x - 1] = z;
+            } else {
+                arr[x - 1][y - 1] = 0;
+                arr[y - 1][x - 1] = 0;
             }
         }
-
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int sum = 0;
-                if (fengxian[i]+fengxian[j]<=danger&&touzie[i]+touzie[j]<=money) {
-                    sum+=touzie[i]*huibaolv[i];
-                    sum+=touzie[j]*huibaolv[j];
-                    if(sum>max){
-                        max=sum;
-                        Arrays.fill(res,0);
-                        res[i]=touzie[i];
-                        res[j]=touzie[j];
-                    }
-                } else if (fengxian[i]+fengxian[j]<=danger&&touzie[i]+touzie[j]>money) {
-                    int sum2=0;
-                    int value=0;
-                    int cha=touzie[i]+touzie[j]-money;
-                    for (int k = 0; k < cha; k++) {
-                        if(touzie[i]-k>0&&touzie[j]-(cha-k)>0){
-                            sum2+=(touzie[i]-k)*huibaolv[i];
-                            sum2+=(touzie[j]-(cha-k))*huibaolv[j];
-                        }
-                        if(sum2>sum){
-                            sum=sum2;
-                            value=k;
-                        }
-                    }
-                    if(sum>max){
-                        max=sum;
-                        Arrays.fill(res,0);
-                        res[i]=touzie[i]-value;
-                        res[j]=touzie[j]-(cha-value);
+        // 2.定义需要的变量
+        int index = -1;
+        int minSpend = Integer.MAX_VALUE;
+        int totalSpend = 0;
+        int[] res = new int[m];
+        res[0] = 1;
+        for (int i = 1; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                for (int k = 0; k < m; k++) {
+                    if (res[j] == 1 && res[k] == 0 && arr[j][k] != -1 && arr[j][k] < minSpend) {
+                        index = k;
+                        minSpend = arr[j][k];
                     }
                 }
             }
+            res[index] = 1;
+            totalSpend += minSpend;
+            minSpend = Integer.MAX_VALUE;
         }
-
-        for (int re : res) {
-            System.out.print(re+" ");
+        if (Arrays.stream(res).sum() == res.length) {
+            System.out.println(totalSpend);
+        } else {
+            System.out.println(-1);
         }
-
-
     }
-
 }
 
 
