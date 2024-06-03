@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.Leetcode150.dynamic;
 
 /**
  * @author cmsxyz@163.com

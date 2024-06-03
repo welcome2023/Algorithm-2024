@@ -10,7 +10,7 @@ System.out.println("本次执行程序所消耗的时间："+(end-start)+"ms");
 -- 2.输入
 int []arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-不用再刷的题：
+不用再刷的题：(机考)
 0101 0102 0103 0104 0105
 0201 0202 0203 0204 0205
 0301 0302 0303 0304 0305
@@ -24,6 +24,13 @@ int []arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).
 1101 1102 1103 1104 1105
 1201
 
+
+
+不用再刷的题：(面试)
+0001 0002 003 004 005
+0006 0007
+0011 
+回溯算法:已完成
 
 
 

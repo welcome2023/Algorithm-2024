@@ -1,23 +1,24 @@
-package com.leetcode;
+package com.Leetcode150.dynamic;
 
 /**
  * @author cmsxyz@163.com
- * @date 2024/5/31 10:09
+ * @date 2024/5/31 9:33
  * @usage
  */
-public class Class01_Leetcode509_FibNa {
+public class Class02_Leetcode070_ClimbStairs {
     public static void main(String[] args) {
-        System.out.println(getRes(5));
+        System.out.println(climbStairs(6));
     }
 
-    public static int getRes(int n) {
-        if (n < 2) {
+    public static int climbStairs(int n) {
+        if (n < 4) {
             return n;
         }
         int[] dp = new int[n + 1];
-        dp[0] = 0;
         dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
+        dp[2] = 2;
+        dp[3] = 3;
+        for (int i = 4; i <= n; i++) {
             dp[i] = dp[i - 1] + dp[i - 2];
         }
         for (int i : dp) {
