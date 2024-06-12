@@ -7,6 +7,10 @@ import java.util.List;
  * @author cmsxyz@163.com
  * @date 2024-06-03 21:57
  * @usage
+ *    2
+ *   3 4
+ *  6 5 7
+ * 4 1 8 3
  */
 public class Class08_Leetcode120_MinimumTotal {
     public static void main(String[] args) {

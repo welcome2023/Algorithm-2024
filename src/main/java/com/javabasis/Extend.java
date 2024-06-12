@@ -1,4 +1,4 @@
-package com.JavaBasis.object;
+package com.javabasis;
 
 import com.algorithmtest.bean.Student;
 
