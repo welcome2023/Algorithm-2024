@@ -1,6 +1,6 @@
 package com.javabasis;
 
-import com.algorithmtest.bean.Student;
+import com.algorithmdoor.bean.Student;
 
 /**
  * @author cmsxyz@163.com
