@@ -6,15 +6,8 @@ package com;
  */
 
 public class Test {
-    String name;
-    int age;
-    int core;
-
-    public  int getRes(int age){
-        return age+100;
-    }
-    public  int getRes(int age,int core){
-        return age+core;
+    public static void main(String[] args) {
+        System.out.println("HelloWorld");
     }
 
 }
