@@ -6,6 +6,10 @@ package com.leetcode150.arrayAndString;
  * @usage
  */
 public class Leetcode459_RepeatedSubstringPattern {
+    public static void main(String[] args) {
+        Leetcode459_RepeatedSubstringPattern obj = new Leetcode459_RepeatedSubstringPattern();
+        System.out.println(obj.repeatedSubstringPattern("abcabc"));
+    }
     public boolean repeatedSubstringPattern(String s) {
         int n = s.length();
         for (int i = 1; i * 2 <= n; ++i) {
