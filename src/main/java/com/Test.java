@@ -13,11 +13,7 @@ import java.util.TreeMap;
 public class Test {
     public static void main(String[] args) {
 
-        TreeMap<Character, Integer> map = new TreeMap<>();
-        map.put('a',2);
-        map.put('b',1);
-        System.out.println(map.remove('a'));
-        System.out.println(map.get('a'));
+        StringBuilder sb = new StringBuilder();
 
     }
 
